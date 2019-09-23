@@ -5,7 +5,7 @@ body {
 
 h1, h2, h3 {
     margin: 0;
-    font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+    font-family: "Concert+One", Helvetica, "Concert+One", sans-serif;
     font-weight: 700;
 }
 
@@ -13,7 +13,7 @@ h1, h2, h3 {
     color: #f1f1f1;
     text-decoration: none;
     padding: 10px 30px;
-    background-color: #8f3faf;
+    background-color: #d3232b;
     font-size: .9em;
     border-radius: 3px;
 }
@@ -56,7 +56,7 @@ nav ul li a {
 }
 
 header {
-    background-image: url('../img/fundo.jpg');
+    background-image: url('../img/tecnologia2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -88,7 +88,7 @@ header p {
 }
 
 #sobre .botao {
-    background-color: #8f3faf;
+    background-color: #d3232b;
     color: #f1f1f1;
 }
 
