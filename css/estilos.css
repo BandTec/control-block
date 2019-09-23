@@ -207,5 +207,22 @@ footer {
     #contato p {
         width: 100%;
     }
+
+    .hld {
+        width: 100%;
+        margin: 30px;
+        margin-left: 90px;
+        border: 2px solid black;
+
+    }
+    
+    .lld{
+        width: 100%;
+        margin: 30px;
+        margin-left: 110px;
+        border: 2px solid black;
+    
+    }
     
 }
+
