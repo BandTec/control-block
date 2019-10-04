@@ -166,7 +166,7 @@ a {
 
 a:hover {
   color: #224abe;
-  text-decoration: underline;
+-decoration: underline;
 }
 
 a:not([href]):not([tabindex]) {
@@ -1813,7 +1813,7 @@ select.form-control:focus::-ms-value {
   padding-bottom: 0.375rem;
   margin-bottom: 0;
   line-height: 1.5;
-  color: #858796;
+  color: #eeff00;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
@@ -4320,9 +4320,9 @@ input[type="button"].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #E6C62E;
   background-clip: border-box;
-  border: 1px solid #e3e6f0;
+  border: 1px solid #E6C62E;
   border-radius: 0.35rem;
 }
 
@@ -9715,39 +9715,39 @@ a:focus {
 }
 
 .bg-gray-100 {
-  background-color: #f8f9fc !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-200 {
-  background-color: #eaecf4 !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-300 {
-  background-color: #dddfeb !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-400 {
-  background-color: #d1d3e2 !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-500 {
-  background-color: #b7b9cc !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-600 {
-  background-color: #858796 !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-700 {
-  background-color: #6e707e !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-800 {
-  background-color: #5a5c69 !important;
+  background-color: #ffd900 !important;
 }
 
 .bg-gray-900 {
-  background-color: #3a3b45 !important;
+  background-color: #ffd900 !important;
 }
 
 .o-hidden {
@@ -10996,3 +10996,12 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.distancia_grafico{
+  margin: 100px;
+}
+
+.teste{
+background-color: yellow; 
+}
+
