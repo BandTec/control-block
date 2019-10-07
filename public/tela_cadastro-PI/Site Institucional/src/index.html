@@ -9,162 +9,251 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/styles.css">
 
-    <title>Site institucional</title>
+    <title>Control Block - Home</title>
   </head>
   <body>
-    
-    <div class="container">
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-       
-        <a class="navbar-brand" href="">Control Block</a>
+    <!-- Barra horizontal de navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-site">
+      <div class="container">
+
+        <a class="navbar-brand h1 mb-0" href="#">Control Block</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbar-site">
+        <!-- Itens do menu -->
+        <div class="collapse navbar-collapse" id="navbarSite">
 
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-              <a class="nav-link" href="">Início</a>
+              <a href="#" class="nav-link">Home</a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link" href="">Sobre</a>
+                <a href="#empresa" class="nav-link">Empresa</a>
+            </li>
+            <li class="nav-item">
+                <a href="#produto" class="nav-link">Produto</a>
             </li>
             
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdownSite" data-toggle="dropdown">Produtos</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Produto 01</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Produto 02</a>
-                <a class="dropdown-item" href="#">Produto 03</a>
-                <a class="dropdown-item" href="#">Produto 04</a>
-              </div>
-            </li>
+            <!-- Social media -->
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDrop">
+                  Social
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Facebook</a>
+                  <a class="dropdown-item" href="#">Twitter</a>
+                  <a class="dropdown-item" href="#">Instagram</a>
+                </div>
+              </li>
+            </ul>
 
-            <li class="nav-item">
-              <a class="nav-link" href="">Contato</a>
-            </li>
-  
           </ul>
+
+          <!-- Botões de login e cadastro -->
+          <form class="form-inline">
+              <button type="button" class="btn btn-outline-primary mr-2">Login</button>
+              <button type="button" class="btn btn-outline-success">Cadastro</button>
+          </form>
+
         </div>
 
-      </nav>
+      </div>
 
-      <!-- Inicio Carrosel -->
-      <!-- Espaçamento my-4 == m - margin / y - eixo Y / 3 tamanho -->
-      <div id="carouselHome" class="carousel slide my-3" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="3000">
-              <img src="http://via.placeholder.com/1920x700" class="d-block w-100" alt="Primeiro slide">
-              <div class="carousel-caption d-none d-lg-block">
+    </nav>
 
-                  <h4>Primeiro slide</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    
-              </div>
-            </div>
-            <div class="carousel-item" data-interval="3000">
-              <img src="http://via.placeholder.com/1920x700" class="d-block w-100" alt="Segundo slide">
-              <div class="carousel-caption d-none d-lg-block">
-
-                  <h4>Segundo slide</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    
-              </div>
-            </div>
-            <div class="carousel-item" data-interval="3000">
-              <img src="http://via.placeholder.com/1920x700" class="d-block w-100" alt="Terceiro slide">
-              <div class="carousel-caption d-none d-lg-block">
-
-                  <h4>Terceiro slide</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    
-              </div>
+    <!-- Imagem da home -->
+    <div class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="http://via.placeholder.com/1920x450" class="d-block w-100">
+            <div class="carousel-caption d-none d-lg-block">
+                <h1>Título Exemplo</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br>Inventore voluptatum iure similique necessitatibus, deleniti perferendis enim placeat eaque quasi maiores et?<br>Esse ullam necessitatibus error neque animi, hic consectetur est?</p>
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselHome" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselHome" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
         </div>
-
-      <!-- Fim Carrosel -->
-
-      <div class="row">
-
-          <div class="col-sm-6 col-md-4 mb-4">
-
-            <div class="card rounded-0">
-
-              <div class="card-body text-center">
-                <h4 class="card-title">Título card 01</h4>
-                <p class="card-text">Quibusdam natus nulla incidunt dolore minima hic, repellat sint sed ea expedita mollitia ex in aliquam beatae aspernatur voluptas, quas est? Vitae!</p>
-                <a href="#" class="card-link">Link do card 01</a>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-sm-6 col-md-4 mb-4">
-
-              <div class="card rounded-0">
-
-                <div class="card-body text-center">
-                  <h4 class="card-title">Título card 02</h4>
-                  <p class="card-text">Quibusdam natus nulla incidunt dolore minima hic, repellat sint sed ea expedita mollitia ex in aliquam beatae aspernatur voluptas, quas est? Vitae!</p>
-                  <a href="#" class="card-link">Link do card 02</a>
-                </div>
-    
-              </div>
-
-          </div>
-
-          <div class="col-sm-12 col-md-4 mb-4">
-
-            <div class="card rounded-0">
-
-                <div class="card-body text-center ">
-                  <h4 class="card-title">Título card 02</h4>
-                  <p class="card-text">Quibusdam natus nulla incidunt dolore minima hic, repellat sint sed ea expedita mollitia ex in aliquam beatae aspernatur voluptas, quas est? Vitae!</p>
-                  <a href="#" class="card-link">Link do card 02</a>
-                </div>
-    
-            </div>
-
-          </div>
-
-      </div>
-
-      <div class="jumbotron rounded-0">
-
-        <h1 class="display-3">Control Block</h1>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore tempore reiciendis, temporibus assumenda ullam corporis excepturi, molestias reprehenderit amet officia consequuntur perspiciatis recusandae, nesciunt accusamus inventore quam atque. Consequuntur, praesentium?
-        </p>
-        <p class="lead">
-          <a href="#" class="btn btn-primary btn-lg">Lorem Ipsum</a>
-        </p>
-
-      </div>
-
-      <div class="card my-3">
-          <div class="card-body">
-            <h5 class="card-title">Localização</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <img src="http://via.placeholder.com/1920x300" class="card-img-top" alt="...">
-      </div>
-
     </div>
+
+    <div class="container my-3">
+        <!-- Quem somos -->
+        <div class="card mb-3 border-0" style="max-width: 100%">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="./assets/teamwork.png" class="card-img rounded-0">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title text-center text-primary">Quem somos</h1>
+                  <!-- Texto com alinhamento justificado -->
+                  <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta! Nesciunt maiores, odio beatae enim numquam temporibus totam, optio deleniti in ex iste! In distinctio reprehenderit iusto?<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut debitis commodi blanditiis at fugiat vel minus, quia placeat nam voluptas odio rem corrupti accusamus velit? Est ratione unde sit facilis?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint praesentium nisi minus vel dolorem iste ipsum iure! Dignissimos qui consequatur et nostrum minima quidem natus veniam asperiores unde, temporibus modi?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta! Nesciunt maiores, odio beatae enim numquam temporibus totam, optio deleniti in ex iste! In distinctio reprehenderit iusto?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="container">
+        <div class="row my-3">
+  
+            <div class="col-sm-6 col-md-4 mb-4">
+              <div class="card rounded border-primary">
+                <div class="card-body text-center">
+                  <h4 class="card-title text-primary">Missão</h4>
+                  <p class="card-text">Quibusdam natus nulla incidunt dolore minima hic, repellat sint sed ea expedita mollitia ex in aliquam beatae aspernatur voluptas, quas est? Vitae!</p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-sm-6 col-md-4 mb-4">
+                <div class="card rounded border-warning">
+                  <div class="card-body text-center">
+                    <h4 class="card-title text-warning">Visão</h4>
+                    <p class="card-text">Quibusdam natus nulla incidunt dolore minima hic, repellat sint sed ea expedita mollitia ex in aliquam beatae aspernatur voluptas, quas est? Vitae!</p>
+                  </div>
+                </div>
+            </div>
+  
+            <div class="col-sm-12 col-md-4 mb-4">
+              <div class="card rounded border-success">
+                  <div class="card-body text-center">
+                    <h4 class="card-title text-success">Valores</h4>
+                    <p class="card-text">Quibusdam natus nulla incidunt dolore minima hic, repellat sint sed ea expedita mollitia ex in aliquam beatae aspernatur voluptas, quas est? Vitae!</p>
+                  </div>
+              </div>
+
+        </div>
+    </div>
+
+    <div class="container my-3">
+        <!-- Produto -->
+        <div class="card mb-3 border-0" style="max-width: 100%">
+            <div class="row no-gutters">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title text-center text-primary" id="produto">Produto</h1>
+                  <!-- Texto com alinhamento justificado -->
+                  <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta! Nesciunt maiores, odio beatae enim numquam temporibus totam, optio deleniti in ex iste! In distinctio reprehenderit iusto?<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut debitis commodi blanditiis at fugiat vel minus, quia placeat nam voluptas odio rem corrupti accusamus velit? Est ratione unde sit facilis?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint praesentium nisi minus vel dolorem iste ipsum iure! Dignissimos qui consequatur et nostrum minima quidem natus veniam asperiores unde, temporibus modi?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta! Nesciunt maiores, odio beatae enim numquam temporibus totam, optio deleniti in ex iste! In distinctio reprehenderit iusto?
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <img src="./assets/queue0.png" class="card-img rounded-0" style="transform: rotateY(180deg)">
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="container my-3">
+        <!-- Gráficos -->
+        <div class="card mb-3 border-0" style="max-width: 100%">
+            <div class="row no-gutters">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title text-center text-warning">Informação em tempo real</h1>
+                  <!-- Texto com alinhamento justificado -->
+                  <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta! Nesciunt maiores, odio beatae enim numquam temporibus totam, optio deleniti in ex iste! In distinctio reprehenderit iusto?<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut debitis commodi blanditiis at fugiat vel minus, quia placeat nam voluptas odio rem corrupti accusamus velit? Est ratione unde sit facilis?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint praesentium nisi minus vel dolorem iste ipsum iure! Dignissimos qui consequatur et nostrum minima quidem natus veniam asperiores unde, temporibus modi?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta!
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <img src="./assets/stats.png" class="card-img rounded-0">
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="container my-3">
+        <!-- Tecnologias -->
+        <div class="card mb-3 border-0" style="max-width: 100%">
+            <div class="row no-gutters">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title text-center text-primary">Tecnologias</h1>
+                  <!-- Texto com alinhamento justificado -->
+                  <p class="card-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta! Nesciunt maiores, odio beatae enim numquam temporibus totam, optio deleniti in ex iste! In distinctio reprehenderit iusto?<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut debitis commodi blanditiis at fugiat vel minus, quia placeat nam voluptas odio rem corrupti accusamus velit? Est ratione unde sit facilis?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint praesentium nisi minus vel dolorem iste ipsum iure! Dignissimos qui consequatur et nostrum minima quidem natus veniam asperiores unde, temporibus modi?<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid at modi cupiditate soluta!
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <img src="./assets/chip.png" class="card-img rounded-0">
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <!-- Simulador Financeiro -->
+    <div class="card text-center my-3 border-success">
+        <div class="card-body">
+          <h1 class="card-title text-success">Orçamento</h1>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+
+          <div class="container">
+              <div class="row">
+                <div class="col my-1">
+                  Em quantas lojas você quer colocar o sensor?
+                </div>
+                <div class="col my-1">
+                  <input id="qtd_lojas" autofocus>
+                </div>
+                <div class="w-100"></div>
+                <div class="col my-1">
+                  Quantas caixas você tem para fila?
+                </div>
+                <div class="col my-1">
+                  <input id="qtd_caixas">
+                </div>
+                <div class="w-100"></div>
+                <div class="col my-1">
+                  Por quantos meses deseja utilizar nossos serviços?
+                </div>
+                <div class="col my-1">
+                  <input type="text" id="qtd_meses">
+                </div>
+                <div class="w-100"></div>
+                <div class="col my-3" id="orcamento" style="display: none">
+                    <span>O valor da compra de nossos serviços será de <b>R$ <b id="total">.</b></b>!</span>
+                    <br>
+                    <span>Você irá pagar uma mensalidade de <b>R$ <b id="manutencao">.</b></b> por manutenção!</span>
+                    <br>
+                    <span>Contrantando o nosso serviço agora, você terá um desconto de <b>10%</b> na contratação e a instalação será totalmente <b>GRATUITA</b>!!!</span>
+                </div>
+              </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" 
+          onclick="calcular()">Simular</button>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+
+    <!-- Iframe localização -->
+    <div class="my-3">
+      <h4 class="card-title text-center">Nossa localização</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2867801729813!2d-46.66377078544255!3d-23.558141584684485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2b106d8eb%3A0x763df49953bb4eec!2sRua+Haddock+Lobo%2C+595+-+Cerqueira+C%C3%A9sar%2C+S%C3%A3o+Paulo+-+SP%2C+01414-002!5e0!3m2!1spt-PT!2sbr!4v1524755625215" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+    </div>
+
+    <!-- Footer básico -->
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Entre em contato conosco:</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Feedback</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sugestões</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Reclamações</a>
+      </li>
+    </ul>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
