@@ -1,6 +1,6 @@
 function calcular() {
     
-    if(qtd_lojas.value == "" && qtd_caixas.value == "" && qtd_meses.value == ""){
+    if(qtd_lojas.value == "" || qtd_caixas.value == "" || qtd_meses.value == ""){
         Swal.fire({
           type: 'error',
           title: 'Tente novamente',
