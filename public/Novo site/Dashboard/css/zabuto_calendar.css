@@ -24,11 +24,11 @@ div.zabuto_calendar .table td {
 
 div.zabuto_calendar .table tr th,
 div.zabuto_calendar .table tr td {
-    background-color:;
+    background-color:aqua;
 }
 
 div.zabuto_calendar .table tr.calendar-month-header th {
-    background-color:;
+    background-color:aqua;
 }
 
 div.zabuto_calendar .table tr.calendar-month-header th span {
@@ -39,11 +39,11 @@ div.zabuto_calendar .table tr.calendar-month-header th span {
 }
 
 div.zabuto_calendar .table tr.calendar-dow-header th {
-    background-color:;
+    background-color:aqua;
 }
 
 div.zabuto_calendar .table tr:last-child {
-    border-bottom: 0px solid #dddddd;
+    border-bottom: 0px solid #000000;
 }
 
 div.zabuto_calendar .table tr.calendar-month-header th {
