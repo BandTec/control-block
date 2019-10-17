@@ -1,28 +1,28 @@
-var Script = function () {
+var Script = function() {
 
-//  tracking chart
+    //  tracking chart
 
     var plot;
-    $(function () {
-        var sin = [], cos = [];
+    $(function() {
+        var ent = [],
+            sai = [];
         for (var i = 0; i < 14; i += 0.1) {
-            sin.push([i, Math.sin(i)]);
-            cos.push([i, Math.cos(i)]);
+            ent.push([i, Math.sin(i)]);
+            sai.push([i, Math.cos(i)]);
         }
 
-        plot = $.plot($("#chart-1"),
-            [ { data: sin, label: "sin(x) = -0.00"},
-                { data: cos, label: "cos(x) = -0.00" } ], {
-                series: {
-                    lines: { show: true }
-                },
-                crosshair: { mode: "x" },
-                grid: { hoverable: true, autoHighlight: false },
-                yaxis: { min: -1.2, max: 1.2 }
-            });
-        var legends = $("#chart-1 .legendLabel");
-        legends.each(function () {
-            // fix the widths so they don't jump around
+        plot = $.plot($("#grafico semanal"), [{ data: sin, label: "entrada(x) = -0.00" },
+            { data: cos, label: "Saida(x) = -0.00" }
+        ], {
+            series: {
+                lines: { show: true }
+            },
+            crosshair: { mode: "x" },
+            grid: { hoverable: true, autoHighlight: false },
+            yaxis: { min: -1.2, max: 1.2 }
+        });
+        var legends = $("#grafico semanal .legendLabel");
+        legends.each(function() {
             $(this).css('width', $(this).width());
         });
 
@@ -43,13 +43,13 @@ var Script = function () {
             for (i = 0; i < dataset.length; ++i) {
                 var series = dataset[i];
 
-                // find the nearest points, x-wise
                 for (j = 0; j < series.data.length; ++j)
                     if (series.data[j][0] > pos.x)
                         break;
 
-                // now interpolate
-                var y, p1 = series.data[j - 1], p2 = series.data[j];
+                    // now interpolate
+                var y, p1 = series.data[j - 1],
+                    p2 = series.data[j];
                 if (p1 == null)
                     y = p2[1];
                 else if (p2 == null)
@@ -61,44 +61,153 @@ var Script = function () {
             }
         }
 
-        $("#chart-1").bind("plothover",  function (event, pos, item) {
+        $("#chart-1").bind("plothover", function(event, pos, item) {
             latestPosition = pos;
             if (!updateLegendTimeout)
                 updateLegendTimeout = setTimeout(updateLegend, 50);
         });
     });
 
-//    selection chart
+    //    selection chart
 
-    $(function () {
-        var data = [
-            {
-                label: "United States",
-                data: [[1990, 18.9], [1991, 18.7], [1992, 18.4], [1993, 19.3], [1994, 19.5], [1995, 19.3], [1996, 19.4], [1997, 20.2], [1998, 19.8], [1999, 19.9], [2000, 20.4], [2001, 20.1], [2002, 20.0], [2003, 19.8], [2004, 20.4]]
+    $(function() {
+        var data = [{
+                label: "Segunda",
+                data: [
+                    [2019, 18.9],
+                    [2019, 18.7],
+                    [2019, 18.4],
+                    [2019, 19.3],
+                    [2019, 19.5],
+                    [2019, 19.3],
+                    [2019, 19.4],
+                    [2019, 20.2],
+                    [2019, 19.8],
+                    [2019, 19.9],
+                    [2019, 20.4],
+                    [2019, 20.1],
+                    [2019, 20.0],
+                    [2019, 19.8],
+                    [2019, 20.4]
+                ]
             },
             {
-                label: "Russia",
-                data: [[1992, 13.4], [1993, 12.2], [1994, 10.6], [1995, 10.2], [1996, 10.1], [1997, 9.7], [1998, 9.5], [1999, 9.7], [2000, 9.9], [2001, 9.9], [2002, 9.9], [2003, 10.3], [2004, 10.5]]
+                label: "Terça",
+                data: [
+                    [2019, 13.4],
+                    [2019, 12.2],
+                    [2019, 10.6],
+                    [2019, 10.2],
+                    [2019, 10.1],
+                    [2019, 9.7],
+                    [2019, 9.5],
+                    [2019, 9.7],
+                    [2019, 9.9],
+                    [2019, 9.9],
+                    [2019, 9.9],
+                    [2019, 10.3],
+                    [2019, 10.5]
+                ]
             },
             {
-                label: "United Kingdom",
-                data: [[1990, 10.0], [1991, 11.3], [1992, 9.9], [1993, 9.6], [1994, 9.5], [1995, 9.5], [1996, 9.9], [1997, 9.3], [1998, 9.2], [1999, 9.2], [2000, 9.5], [2001, 9.6], [2002, 9.3], [2003, 9.4], [2004, 9.79]]
+                label: "Quarta",
+                data: [
+                    [2019, 10.0],
+                    [2019, 11.3],
+                    [2019, 9.9],
+                    [2019, 9.6],
+                    [2019, 9.5],
+                    [2019, 9.5],
+                    [2019, 9.9],
+                    [2019, 9.3],
+                    [2019, 9.2],
+                    [2019, 9.2],
+                    [2019, 9.5],
+                    [2019, 9.6],
+                    [2019, 9.3],
+                    [2019, 9.4],
+                    [2019, 9.79]
+                ]
             },
             {
-                label: "Germany",
-                data: [[1990, 12.4], [1991, 11.2], [1992, 10.8], [1993, 10.5], [1994, 10.4], [1995, 10.2], [1996, 10.5], [1997, 10.2], [1998, 10.1], [1999, 9.6], [2000, 9.7], [2001, 10.0], [2002, 9.7], [2003, 9.8], [2004, 9.79]]
+                label: "Quinta",
+                data: [
+                    [2019, 12.4],
+                    [2019, 11.2],
+                    [2019, 10.8],
+                    [2019, 10.5],
+                    [2019, 10.4],
+                    [2019, 10.2],
+                    [2019, 10.5],
+                    [2019, 10.2],
+                    [2019, 10.1],
+                    [2019, 9.6],
+                    [2019, 9.7],
+                    [2019, 10.0],
+                    [2019, 9.7],
+                    [2019, 9.8],
+                    [2019, 9.79]
+                ]
             },
             {
-                label: "Denmark",
-                data: [[1990, 9.7], [1991, 12.1], [1992, 10.3], [1993, 11.3], [1994, 11.7], [1995, 10.6], [1996, 12.8], [1997, 10.8], [1998, 10.3], [1999, 9.4], [2000, 8.7], [2001, 9.0], [2002, 8.9], [2003, 10.1], [2004, 9.80]]
+                label: "Quinta",
+                data: [
+                    [2019, 9.7],
+                    [2019, 12.1],
+                    [2019, 10.3],
+                    [2019, 11.3],
+                    [2019, 11.7],
+                    [2019, 10.6],
+                    [2019, 12.8],
+                    [2019, 10.8],
+                    [2019, 10.3],
+                    [2019, 9.4],
+                    [2019, 8.7],
+                    [2019, 9.0],
+                    [2019, 8.9],
+                    [2019, 10.1],
+                    [2019, 9.80]
+                ]
             },
             {
-                label: "Sweden",
-                data: [[1990, 5.8], [1991, 6.0], [1992, 5.9], [1993, 5.5], [1994, 5.7], [1995, 5.3], [1996, 6.1], [1997, 5.4], [1998, 5.4], [1999, 5.1], [2000, 5.2], [2001, 5.4], [2002, 6.2], [2003, 5.9], [2004, 5.89]]
+                label: "Sexta",
+                data: [
+                    [2019, 5.8],
+                    [2019, 6.0],
+                    [2019, 5.9],
+                    [2019, 5.5],
+                    [2019, 5.7],
+                    [2019, 5.3],
+                    [2019, 6.1],
+                    [2019, 5.4],
+                    [2019, 5.4],
+                    [2019, 5.1],
+                    [2019, 5.2],
+                    [2019, 5.4],
+                    [2019, 6.2],
+                    [2019, 5.9],
+                    [2019, 5.89]
+                ]
             },
             {
-                label: "Norway",
-                data: [[1990, 8.3], [1991, 8.3], [1992, 7.8], [1993, 8.3], [1994, 8.4], [1995, 5.9], [1996, 6.4], [1997, 6.7], [1998, 6.9], [1999, 7.6], [2000, 7.4], [2001, 8.1], [2002, 12.5], [2003, 9.9], [2004, 19.0]]
+                label: "Sabádo",
+                data: [
+                    [2019, 8.3],
+                    [2019, 8.3],
+                    [2019, 7.8],
+                    [2019, 8.3],
+                    [2019, 8.4],
+                    [2019, 5.9],
+                    [2019, 6.4],
+                    [2019, 6.7],
+                    [2019, 6.9],
+                    [2019, 7.6],
+                    [2019, 7.4],
+                    [2019, 8.1],
+                    [2019, 12.5],
+                    [2019, 9.9],
+                    [2019, 19.0]
+                ]
             }
         ];
 
@@ -115,7 +224,7 @@ var Script = function () {
 
         var placeholder = $("#chart-2");
 
-        placeholder.bind("plotselected", function (event, ranges) {
+        placeholder.bind("plotselected", function(event, ranges) {
             $("#selection").text(ranges.xaxis.from.toFixed(1) + " to " + ranges.xaxis.to.toFixed(1));
 
             var zoom = $("#zoom").attr("checked");
@@ -126,27 +235,29 @@ var Script = function () {
                     }));
         });
 
-        placeholder.bind("plotunselected", function (event) {
+        placeholder.bind("plotunselected", function(event) {
             $("#selection").text("");
         });
 
         var plot = $.plot(placeholder, data, options);
 
-        $("#clearSelection").click(function () {
+        $("#clearSelection").click(function() {
             plot.clearSelection();
         });
 
-        $("#setSelection").click(function () {
+        $("#setSelection").click(function() {
             plot.setSelection({ xaxis: { from: 1994, to: 1995 } });
         });
     });
 
-//    live chart
+    //    live chart
 
-    $(function () {
+    $(function() {
         // we use an inline data source in the example, usually data would
         // be fetched from a server
-        var data = [], totalPoints = 300;
+        var data = [],
+            totalPoints = 300;
+
         function getRandomData() {
             if (data.length > 0)
                 data = data.slice(1);
@@ -171,7 +282,7 @@ var Script = function () {
 
         // setup control widget
         var updateInterval = 30;
-        $("#updateInterval").val(updateInterval).change(function () {
+        $("#updateInterval").val(updateInterval).change(function() {
             var v = $(this).val();
             if (v && !isNaN(+v)) {
                 updateInterval = +v;
@@ -189,10 +300,10 @@ var Script = function () {
             yaxis: { min: 0, max: 100 },
             xaxis: { show: false }
         };
-        var plot = $.plot($("#chart-3"), [ getRandomData() ], options);
+        var plot = $.plot($("#chart-3"), [getRandomData()], options);
 
         function update() {
-            plot.setData([ getRandomData() ]);
+            plot.setData([getRandomData()]);
             // since the axes don't change, we don't need to call plot.setupGrid()
             plot.draw();
 
@@ -201,15 +312,20 @@ var Script = function () {
 
         update();
     });
-    
-//    support chart
 
-    $(function () {
+    //    support chart
+
+    $(function() {
         var d1 = [];
         for (var i = 0; i < 14; i += 0.5)
             d1.push([i, Math.sin(i)]);
 
-        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+        var d2 = [
+            [0, 3],
+            [4, 8],
+            [8, 5],
+            [9, 13]
+        ];
 
         var d3 = [];
         for (var i = 0; i < 14; i += 0.5)
@@ -225,10 +341,9 @@ var Script = function () {
 
         var d6 = [];
         for (var i = 0; i < 14; i += 0.5 + Math.random())
-            d6.push([i, Math.sqrt(2*i + Math.sin(i) + 5)]);
+            d6.push([i, Math.sqrt(2 * i + Math.sin(i) + 5)]);
 
-        $.plot($("#chart-4"), [
-            {
+        $.plot($("#chart-4"), [{
                 data: d1,
                 lines: { show: true, fill: true }
             },
@@ -256,9 +371,9 @@ var Script = function () {
         ]);
     });
 
-//    bar chart
+    //    bar chart
 
-    $(function () {
+    $(function() {
         var d1 = [];
         for (var i = 0; i <= 10; i += 1)
             d1.push([i, parseInt(Math.random() * 30)]);
@@ -271,10 +386,13 @@ var Script = function () {
         for (var i = 0; i <= 10; i += 1)
             d3.push([i, parseInt(Math.random() * 30)]);
 
-        var stack = 0, bars = true, lines = false, steps = false;
+        var stack = 0,
+            bars = true,
+            lines = false,
+            steps = false;
 
         function plotWithOptions() {
-            $.plot($("#chart-5"), [ d1, d2, d3 ], {
+            $.plot($("#chart-5"), [d1, d2, d3], {
                 series: {
                     stack: stack,
                     lines: { show: lines, fill: true, steps: steps },
@@ -285,12 +403,12 @@ var Script = function () {
 
         plotWithOptions();
 
-        $(".stackControls input").click(function (e) {
+        $(".stackControls input").click(function(e) {
             e.preventDefault();
             stack = $(this).val() == "With stacking" ? true : null;
             plotWithOptions();
         });
-        $(".graphControls input").click(function (e) {
+        $(".graphControls input").click(function(e) {
             e.preventDefault();
             bars = $(this).val().indexOf("Bars") != -1;
             lines = $(this).val().indexOf("Lines") != -1;
@@ -299,10 +417,10 @@ var Script = function () {
         });
     });
 
-//    graph chart
+    //    graph chart
 
 
-    $(function () {
+    $(function() {
         // data
         /*var data = [
          { label: "Series1",  data: 10},
@@ -321,102 +439,95 @@ var Script = function () {
          { label: "Series6",  data: [[1,0]]}
          ];*/
         var data = [];
-        var series = Math.floor(Math.random()*10)+1;
-        for( var i = 0; i<series; i++)
-        {
-            data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
+        var series = Math.floor(Math.random() * 10) + 1;
+        for (var i = 0; i < series; i++) {
+            data[i] = { label: "Series" + (i + 1), data: Math.floor(Math.random() * 100) + 1 }
         }
 
 
 
         // GRAPH 1
-        $.plot($("#graph1"), data,
-            {
-                series: {
-                    pie: {
-                        show: true
-                    }
-                },
-                legend: {
-                    show: false
+        $.plot($("#graph1"), data, {
+            series: {
+                pie: {
+                    show: true
                 }
-            });
+            },
+            legend: {
+                show: false
+            }
+        });
 
         // GRAPH 2
-        $.plot($("#graph2"), data,
-            {
-                series: {
-                    pie: {
+        $.plot($("#graph2"), data, {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                    label: {
                         show: true,
                         radius: 1,
-                        label: {
-                            show: true,
-                            radius: 1,
-                            formatter: function(label, series){
-                                return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
-                            },
-                            background: { opacity: 0.8 }
-                        }
+                        formatter: function(label, series) {
+                            return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                        },
+                        background: { opacity: 0.8 }
                     }
-                },
-                legend: {
-                    show: false
                 }
-            });
+            },
+            legend: {
+                show: false
+            }
+        });
 
         // GRAPH 3
-        $.plot($("#graph3"), data,
-            {
-                series: {
-                    pie: {
+        $.plot($("#graph3"), data, {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                    label: {
                         show: true,
-                        radius: 1,
-                        label: {
-                            show: true,
-                            radius: 3/4,
-                            formatter: function(label, series){
-                                return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
-                            },
-                            background: { opacity: 0.5 }
-                        }
+                        radius: 3 / 4,
+                        formatter: function(label, series) {
+                            return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                        },
+                        background: { opacity: 0.5 }
                     }
-                },
-                legend: {
-                    show: false
                 }
-            });
+            },
+            legend: {
+                show: false
+            }
+        });
 
 
         // DONUT
-        $.plot($("#donut"), data,
-            {
-                series: {
-                    pie: {
-                        innerRadius: 0.5,
-                        show: true
-                    }
+        $.plot($("#donut"), data, {
+            series: {
+                pie: {
+                    innerRadius: 0.5,
+                    show: true
                 }
-            });
+            }
+        });
 
 
 
     });
 
-    function pieHover(event, pos, obj)
-    {
+    function pieHover(event, pos, obj) {
         if (!obj)
             return;
         percent = parseFloat(obj.series.percent).toFixed(2);
-        $("#hover").html('<span style="font-weight: bold; color: '+obj.series.color+'">'+obj.series.label+' ('+percent+'%)</span>');
+        $("#hover").html('<span style="font-weight: bold; color: ' + obj.series.color + '">' + obj.series.label + ' (' + percent + '%)</span>');
     }
 
-    function pieClick(event, pos, obj)
-    {
+    function pieClick(event, pos, obj) {
         if (!obj)
             return;
         percent = parseFloat(obj.series.percent).toFixed(2);
-        alert(''+obj.series.label+': '+percent+'%');
+        alert('' + obj.series.label + ': ' + percent + '%');
     }
 
-    
+
 }();
