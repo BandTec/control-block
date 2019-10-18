@@ -37,9 +37,9 @@
 
     #flip-scroll th { border-bottom: 0; border-left: 0; }
     #flip-scroll td { border-left: 0; border-right: 0; border-bottom: 0; }
-    #flip-scroll tbody tr { border-left: 1px solid #babcbf; }
+    #flip-scroll tbody tr { border-left: 1px solid #000000; }
     #flip-scroll th:last-child,
-    #flip-scroll td:last-child { border-bottom: 1px solid #babcbf; }
+    #flip-scroll td:last-child { border-bottom: 1px solid #000000; }
 }
 
 /*no more table*/
@@ -62,12 +62,12 @@
         left: -9999px;
     }
 
-    #no-more-tables tr { border: 1px solid #ccc; }
+    #no-more-tables tr { border: 1px solid rgb(0, 0, 0); }
 
     #no-more-tables td {
         /* Behave like a "row" */
         border: none;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid rgb(0, 0, 0);
         position: relative;
         padding-left: 50%;
         white-space: normal;

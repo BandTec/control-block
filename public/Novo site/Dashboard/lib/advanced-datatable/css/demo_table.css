@@ -366,27 +366,27 @@ table.display tr.odd.row_selected td {
  */
 /* For the standard odd/even */
 tr.odd td.sorting_1 {
-	background-color: #D3D6FF;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.odd td.sorting_2 {
-	background-color: #DADCFF;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.odd td.sorting_3 {
-	background-color: #E0E2FF;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.even td.sorting_1 {
-	background-color: #EAEBFF;
+	background-color:rgb(0, 0, 0);
 }
 
 tr.even td.sorting_2 {
-	background-color: #F2F3FF;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.even td.sorting_3 {
-	background-color: #F9F9FF;
+	background-color: rgb(0, 0, 0);
 }
 
 
@@ -401,43 +401,43 @@ tr.even td.sorting_3 {
 	  ee > e2
  */
 tr.odd.gradeA td.sorting_1 {
-	background-color: #c4ffc4;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.odd.gradeA td.sorting_2 {
-	background-color: #d1ffd1;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.odd.gradeA td.sorting_3 {
-	background-color: #d1ffd1;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.even.gradeA td.sorting_1 {
-	background-color: #d5ffd5;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.even.gradeA td.sorting_2 {
-	background-color: #e2ffe2;
+	background-color: rgb(0, 0, 0);
 }
 
 tr.even.gradeA td.sorting_3 {
-	background-color: #e2ffe2;
+	background-color: #000000;
 }
 
 tr.odd.gradeC td.sorting_1 {
-	background-color: #c4c4ff;
+	background-color: #000000;
 }
 
 tr.odd.gradeC td.sorting_2 {
-	background-color: #d1d1ff;
+	background-color: #000000;
 }
 
 tr.odd.gradeC td.sorting_3 {
-	background-color: #d1d1ff;
+	background-color: #000000;
 }
 
 tr.even.gradeC td.sorting_1 {
-	background-color: #d5d5ff;
+	background-color: #000000;
 }
 
 tr.even.gradeC td.sorting_2 {

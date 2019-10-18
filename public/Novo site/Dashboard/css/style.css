@@ -1026,10 +1026,10 @@ PANELS CONFIGURATIONS
 	font-size: 14px;
 }
 
-/*Content Panel*/
+/*advPanel*/
 .content-panel {
-	background: #ffffff;
-	box-shadow: 0px 3px 2px #aab2bd;
+	background: rgb(103, 219, 204);
+	box-shadow: 0px 3px 2px #ffffff;
 	padding-top: 15px;
 	padding-bottom: 5px;
 }
@@ -1038,7 +1038,7 @@ PANELS CONFIGURATIONS
 }
 /* Message Panel */
 .message-p {
-	background: #f5f5f5;
+	background: #000000;
 }
 .message-p .message-header {
 	background: #dcdfe3;
@@ -1749,7 +1749,7 @@ label {
 .dataTables_paginate.paging_bootstrap.pagination li {
 	float: left;
 	margin: 0 1px;
-	border: 1px solid #ddd;
+	border: 1px solid rgb(253, 0, 0);
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
@@ -1757,12 +1757,12 @@ ul li {
 	list-style: none;
 }
 .dataTables_paginate.paging_bootstrap.pagination li a {
-	color: #797979;
+	color: #000000;
 	padding: 5px 10px;
 	display: inline-block;
 }
 .dataTables_paginate.paging_bootstrap.pagination li:hover a, .dataTables_paginate.paging_bootstrap.pagination li.active a {
-	color: #fff;
+	color: rgb(0, 0, 0);
 	background: #69C7EA;
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -1830,7 +1830,7 @@ ul li {
 	font-size: 60px;
 }
 
-.lock-screen .modal-content {
+.lock-screen .modal-adv{
 	position: relative;
 	background-color: #f2f2f2;
 	background-clip: padding-box;
@@ -1992,8 +1992,8 @@ ul.my-friends li .friends-pic {
 
 /*PRICING TABLE*/
 .custom-box {
-	background:#FFFFFF;
-	border: 1px solid #DCDBD7;
+	background:rgb(0, 0, 0);
+	border: 1px solid rgb(0, 0, 0);
 	margin: 30px 0;
 	padding: 30px 20px 35px;
 	text-align: center;
@@ -3110,7 +3110,7 @@ ul.chat-available-user li a:hover {
 .ui-sortable > li {
     padding: 15px 0 15px 35px !important ;
     position: relative;
-    background: #f5f6f8;
+    background: #000000;
     margin-bottom: 2px;
     border-bottom   : none !important;
 }
