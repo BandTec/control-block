@@ -4,13 +4,62 @@
     <meta charset="UTF-8" />
     <title>Formulário de Login e Registro com HTML5 e CSS3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./node_modules/sweetalert2/dist/sweetalert2.min.css">
+
+    <!-- CSS PERSONAL -->
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" href="./Site Institucional/node_modules/sweetalet2/dist/sweetalert2.min.css">
 
 </head>
 
 <body>
-    <div class="container">
+
+
+    <!-- Barra horizontal de navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand h1 mb-0" href="../Site Institucional/index.html">Control Block</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Itens do menu -->
+            <div class="collapse navbar-collapse" id="navbarSite">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a href="../Site Institucional/index.html#empresa" class="nav-link">Empresa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../Site Institucional/index.html#produto" class="nav-link">Produto</a>
+                    </li>
+                </ul>
+
+                <!-- Botões de login e cadastro -->
+                <form class="form-inline">
+                    <a href="../Tela de cadastro/login.html"><button type="button" id="login1"
+                            class="btn btn-outline-primary mr-2">Login</button></a>
+                    <a href="../Tela de cadastro/cadastro.html"><button type="button" id="cadastro1"
+                            class="btn btn-outline-success">Cadastrar</button></a>
+                </form>
+
+            </div>
+
+        </div>
+
+    </nav>
+    <div class="container  my-4">
         <div class="content">
             <!--FORMULÁRIO DE LOGIN-->
             <div id="login">
@@ -18,12 +67,14 @@
                     <h1>Login</h1>
                     <p>
                         <label for="nome_login">Qual o seu usuário?</label>
-                        <input id="nome_login" name="nome_login" required="required" type="text" placeholder="Digite seu usuário" />
+                        <input id="nome_login" name="nome_login" required="required" type="text"
+                            placeholder="Digite seu usuário" />
                     </p>
 
                     <p>
                         <label for="email_login">Qual a sua senha?</label>
-                        <input id="email_login" name="senha_login" required="required" type="password" placeholder="Digite sua senha" />
+                        <input id="email_login" name="senha_login" required="required" type="password"
+                            placeholder="Digite sua senha" />
                     </p>
 
                     <p>
@@ -32,21 +83,17 @@
                     </p>
 
                     <p>
-                        <input type="submit" value="Entrar" />
+                            <button type="button" class="btn btn-lg btn-primary btn-block">Entrar</button>
                     </p>
 
                     <p class="link">
                         Ainda não tem conta?
-                        <a href="./cadastro.html">Cadastre-se</a>
+                        <a href="./cadastro.html"><button type="button" class="btn btn-success">Cadastre-se</button></a>
                     </p>
                 </form>
             </div>
         </div>
     </div>
-    <script src="sweetalert2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
-
 
 </html>
