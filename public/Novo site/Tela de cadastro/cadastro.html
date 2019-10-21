@@ -8,9 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS --> 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./node_modules/sweetalert2/dist/sweetalert2.min.css">
 
     <!-- CSS PERSONAL -->
@@ -59,7 +58,7 @@
         <div class="content">
 
 
-            <!--FORMULÁRIO DE CADASTRO--> 
+            <!--FORMULÁRIO DE CADASTRO-->
             <div id="cadastro" class="border border-success ">
                 <form method="post" action="">
                     <h1>Cadastro</h1>
@@ -71,18 +70,16 @@
 
                     <p>
                         <label for="email_cad">Qual o seu e-mail?</label>
-                        <input id="email_cad" name="email_cad" required="required" class="border border-success" type="email"
-                            placeholder="contato@servidor.com" />
+                        <input id="email_cad" name="email_cad" required="required" class="border border-success" type="email" placeholder="contato@servidor.com" />
                     </p>
 
                     <p>
                         <label for="senha_cad">Qual vai ser a sua senha?</label>
-                        <input id="senha_cad" name="senha_cad" required="required" class="border border-success" type="password"
-                            placeholder="*********" />
+                        <input id="senha_cad" name="senha_cad" required="required" class="border border-success" type="password" placeholder="*********" />
                     </p>
 
                     <p>
-                            <button type="button" class="btn btn-lg btn-success btn-block">Cadastrar</button>
+                        <button type="button" onclick="Cadastro()" class="btn btn-lg btn-success btn-block">Cadastrar</button>
                     </p>
 
                     <p class="link">
@@ -93,6 +90,27 @@
             </div>
         </div>
     </div>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 
 </html>
+<script>
+    function Cadastro() {
+        if (email_cad.value.endsWith('@.com.br') || senha_cad.value.length <= 4 || nome_cad.value == "") {
+            Swal.fire({
+                type: 'error',
+                title: 'Oops',
+                text: 'Preencha os campos coretamente!',
+            })
+        } else {
+            Swal.fire({
+                type: 'success',
+                title: 'Parabéns',
+                text: 'Cadastro realizado com sucesso!',
+            })
+            window.location.href = "login.html"
+        }
+    }
+</script>
