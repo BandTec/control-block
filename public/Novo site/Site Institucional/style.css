@@ -1,36 +1,29 @@
 .carousel-item {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url(./assets/a.jpg);
-    background-size: cover;
-    height: 400px;  
-    opacity : 0.8; 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+    url(./assets/a.jpg);
+  background-size: cover;
+  height: 400px;
+  opacity: 0.8;
 }
 
 .carousel-caption {
-    top: 20px;
-}
-
-.rounded {
-    height: 180px;
-    width: 500px;
+  top: 20px;
 }
 
 .border-success {
-    padding-bottom: 22px;
+  padding-bottom: 22px;
 }
 
 .logo {
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin-top: 5px;
-    margin-left: 3%;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin-top: 5px;
+  margin-left: 3%;
 }
 
 .logo img {
-    margin-left: 20px;
-    height: 50px;
-    width: 50px;
+  margin-left: 20px;
+  height: 50px;
+  width: 50px;
 }
-
-
-
