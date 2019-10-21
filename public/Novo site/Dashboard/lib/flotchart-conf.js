@@ -11,7 +11,7 @@ var Script = function() {
             sai.push([i, Math.cos(i)]);
         }
 
-        plot = $.plot($("#grafico semanal"), [{ data: sin, label: "entrada(x) = -0.00" },
+        plot = $.plot($("chart-1"), [{ data: sin, label: "entrada(x) = -0.00" },
             { data: cos, label: "Saida(x) = -0.00" }
         ], {
             series: {
@@ -21,7 +21,7 @@ var Script = function() {
             grid: { hoverable: true, autoHighlight: false },
             yaxis: { min: -1.2, max: 1.2 }
         });
-        var legends = $("#grafico semanal .legendLabel");
+        var legends = $("chart-1 .legendLabel");
         legends.each(function() {
             $(this).css('width', $(this).width());
         });

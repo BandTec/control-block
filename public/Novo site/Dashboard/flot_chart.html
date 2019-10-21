@@ -9,13 +9,14 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <title>Control Block</title>
 
+    <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
+    <!-- Bootstrap core CSS -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!--external css-->
     <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet">
 
@@ -39,9 +40,10 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-tasks"></i>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
+
+
+
+
 
             </div>
             <div class="top-menu">
@@ -50,7 +52,7 @@
                 </ul>
             </div>
         </header>
-
+        <!--sidebar start-->
         <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
@@ -70,55 +72,81 @@
                             <span>Relatórios</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="responsive_table.html">Relatórios diários</a></li>
-                            <li><a href="advanced_table.html">Relatórios avançados</a></li>
+                            <li><a href="responsive_table.html">Relatório diários</a></li>
+                            <li><a href="advanced_table.html">Relatórios mensais</a></li>
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a class="active" href="javascript:;">
-                            <i class=" fa fa-bar-chart-o"></i>
-                            <span>Gráficos</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="flot_chart.html">Gráfico semanal</a></li>
-                            <li><a href="xchart.html">Gráfico mensal</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    <li>
+                        <li class="sub-menu">
+                            <a class="active" href="javascript:;">
+                                <i class=" fa fa-bar-chart-o"></i>
+                                <span>Gráficos</span>
+                            </a>
+                            <ul class="sub">
+                                <li class="active"><a href="flot_chart.html">Gráfico semanal</a></li>
+                                <li><a href="xchart.html">Gráfico mensal</a></li>
+                            </ul>
+                        </li>
             </div>
         </aside>
 
         <section id="main-content">
             <section class="wrapper">
-                <h3><i class="fa fa-angle-right"></i> Gráfico semanal</h3>
+                <h3><i class="fa fa-angle-right"></i> Gráficos</h3>
                 <!-- page start-->
                 <div class="flot-chart">
+                    <!-- page start-->
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="content-panel">
-                                <h4><i class="fa fa-angle-right"></i></h4>
+                                <h4><i class="fa fa-angle-right"></i> Gráfico semanal</h4>
                                 <div class="panel-body">
                                     <div id="chart-1" class="chart"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="btn-toolbar">
+                        <div class="btn-group stackControls">
+                            <input type="button" class="btn btn-info" value="With stacking" />
+                            <input type="button" class="btn btn-danger" value="Without stacking" />
+                        </div>
+                        <div class="space5"></div>
+                        <div class="btn-group graphControls">
+                            <input type="button" class="btn" value="Bars" />
+                            <input type="button" class="btn" value="Lines" />
+                            <input type="button" class="btn" value="Lines with steps" />
+                        </div>
+                    </div>
                 </div>
                 </div>
+                <!--/coontent-panel -->
                 </div>
+                <!-- /col-lg-6 --->
                 </div>
+                <!-- row -->
                 </div>
-                </div>
-
+                <!--/flot-chart -->
+                <!-- page end-->
             </section>
         </section>
-
+        <!-- /MAIN CONTENT -->
+        <!--main content end-->
+        <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
                 <p>
-                    &copy; Copyrights <strong>Control Block</strong>.
+                    &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
                 </p>
-
+                <div class="credits">
+                    <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+                    Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+                </div>
                 <a href="flot_chart.html#" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>
