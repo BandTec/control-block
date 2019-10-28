@@ -1,25 +1,43 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+ /** alguns comentários precisam ser em ingles, bom aqui funciona o http do nosso site é como se fosse um "servidor local" */
 
 var app = require('../app');
 var debug = require('debug')('Control-Block:server');
 var http = require('http');
 
-
+/**
+ * Get port from environment and store in Express.
+ */
+/** Obtenhe porta do ambiente e armazena no Express. */
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-
+/**
+ * Create HTTP server.
+ */
+/** Cria o http do servidor */
 
 var server = http.createServer(app);
 
-
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+/** escuta a porta fornecida, em todas as interfaces de rede. */
 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-
-
+/**
+ * Normalize a port into a number, string, or false.
+ */
+/** Normaliza uma porta em um número, em sequência de verdadeiro ou falso. */
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
@@ -28,13 +46,17 @@ function normalizePort(val) {
   }
 
   if (port >= 0) {
+    // número da porta
     return port;
   }
 
   return false;
 }
 
-
+/**
+ * Event listener for HTTP server "error" event.
+ */
+/** evento "erro" do servidor HTTP. */
 
 function onError(error) {
   if (error.syscall !== 'listen') {
@@ -45,6 +67,7 @@ function onError(error) {
     ? 'Pipe ' + port
     : 'Port ' + port;
 
+  // lida com erros específicos de escuta com mensagens 
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
@@ -58,6 +81,12 @@ function onError(error) {
       throw error;
   }
 }
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+ /**evento de "escuta" do servidor HTTP. */
 
 
 function onListening() {
