@@ -60,7 +60,7 @@
 
             <!--FORMULÁRIO DE CADASTRO-->
             <div id="cadastro" class="border border-success ">
-                <form method="post" action="">
+                <form id="form_cadastro" method="post" action="">
                     <h1>Cadastro</h1>
 
                     <p>
@@ -79,7 +79,7 @@
                     </p>
 
                     <p>
-                        <button type="button" onclick="Cadastro()" class="btn btn-lg btn-success btn-block">Cadastrar</button>
+                        <button type="button" onclick="registrar()" class="btn btn-lg btn-success btn-block">Cadastrar</button>
                     </p>
 
                     <p class="link">
@@ -97,20 +97,48 @@
 
 </html>
 <script>
-    function Cadastro() {
-        if (email_cad.value.endsWith('@.com.br') || senha_cad.value.length <= 4 || nome_cad.value == "") {
-            Swal.fire({
-                type: 'error',
-                title: 'Oops',
-                text: 'Preencha os campos coretamente!',
-            })
-        } else {
-            Swal.fire({
-                type: 'success',
-                title: 'Parabéns',
-                text: 'Cadastro realizado com sucesso!',
-            })
-            window.location.href = "login.html"
-        }
+    function registrar() {
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        Swal.fire({
+            title: 'Carregando...',
+            text: 'Estamos efetuando o seu cadastro!',
+            imageUrl: 'aguarde.gif',
+            imageAlt: 'Custom image',
+            showConfirmButton: false
+        })
+        fetch("../usuarios/cadastro", {
+            method: "POST",
+            body: formulario
+        }).then(function(response) {
+
+            if (response.ok) {
+
+                response.json().then(function(resposta) {
+                    if (resposta == false) {
+                        Swal.fire('Algo deu errado', 'Tente novamente', 'warning');
+                    } else {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+
+                        Toast.fire({
+                            type: 'success',
+                            title: 'Cadastrado com sucesso!'
+                        }).then(function() {
+                            sessionStorage.id = resposta.id;
+                            window.location.href = 'login.html';
+                        })
+
+                    }
+
+                });
+            } else {
+                Swal.fire('Erro no cadastro', 'Tente novamente', 'error');
+            }
+        });
+        return false;
     }
 </script>

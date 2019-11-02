@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var banco = require('../app-banco');
+var banco = require('../../app-banco');
 
 // O router de estatisticas é aonde iremos fazer a conexão para as estatiscas dos gráficos 
 //então todas as informações de entrada e saída precisam estar aqui
@@ -15,10 +15,10 @@ router.get('/estatisticas', function(req, res, next) {
 
     banco.conectar().then(pool => {
         return pool.request().query(`
-          //select 
-          //max(Entadas) as Número de entradas, 
-            //min(Saídas) as Número de saídas, 
-          //from eventos
+          select 
+          max(tipo_sensor) as Número de entradas, 
+          min(tipo_sensor) as Número de saídas, 
+          from eventos
           `);
         // aqui é a consulta, ou seja onde ele faz o calculo das estatisticas
     }).then(consulta => {

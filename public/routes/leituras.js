@@ -1,7 +1,7 @@
 // não mexa nestas 3 linhas!
 var express = require('express');
 var router = express.Router();
-var banco = require('../app-banco');
+var banco = require('../../app-banco');
 // não mexa nessas 3 linhas!
 // aqui acontece os registros das últimas leiturass 
 router.get('/ultimas', function(req, res, next) {
@@ -9,9 +9,9 @@ router.get('/ultimas', function(req, res, next) {
     banco.conectar().then(pool => {
         var limite_linhas = 1;
         return pool.request().query(`select top ${limite_linhas} 
-                            Entrada, 
-                            Saida, 
-                            FORMAT(tempo,'HH:mm:ss') as momento 
+                            tipo_sensor as Entrada,
+                            tipo_sensor as Saída,
+                            FORMAT(tempo,'HH:mm:ss') as eventos
                             from eventos order by idEventos desc`);
     }).then(consulta => {
         // o formato da hora é HH: Hora com 2 dígitos  MM: Minutos com 2 dígitos  SS: Segundos com 2 dígitos, selecionar os dados de forma descrecente
@@ -43,7 +43,7 @@ router.get('/tempo-real', function(req, res, next) {
 
     banco.conectar().then(() => {
         return banco.sql.query(`
-        select top 1 Entrada, Saida from leitura order by id desc
+        select top 1 tipo_sensor as Entrada, tipo_sensor as Saída from eventos order by id desc
         `);
     }).then(consulta => {
         // "select top" limita as linhas retornadas em um conjunto de resultados que começão em 1, em ordem descrecente dos dados das estastiticas

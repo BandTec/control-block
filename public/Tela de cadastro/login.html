@@ -62,7 +62,7 @@
         <div class="content">
             <!--FORMULÁRIO DE LOGIN-->
             <div id="login" class="border border-primary">
-                <form method="post" action="">
+                <form id="form_login" method="post" action="">
                     <h1>Entrar</h1>
                     <p>
                         <label for="nome_login">Qual o seu usuário?</label>
@@ -80,7 +80,7 @@
                     </p>
 
                     <p>
-                        <button type="button" onclick="Login()" class="btn btn-lg btn-primary btn-block">Entrar</button>
+                        <button type="button" onclick="entrar()" class="btn btn-lg btn-primary btn-block">Entrar</button>
                     </p>
 
                     <p class="link">
@@ -98,20 +98,67 @@
 
 </html>
 <script>
-    function Login() {
-        if (nome_login.value.endsWith('@block.com.br') && senha_login.value.length <= 4 && nome_login.value != '@block.com.br') {
-            Swal.fire({
-                type: 'error',
-                title: 'Oops',
-                text: 'Preencha os campos coretamente!',
-            })
-        } else {
-            Swal.fire({
-                type: 'success',
-                title: 'Parabéns',
-                text: 'Cadastro realizado com sucesso!',
-            })
-            window.location.href = "../Dashboard/index.html"
-        }
+    function entrar() {
+        var formulario = new URLSearchParams(new FormData(form_login));
+        Swal.fire({
+            title: 'Carregando...',
+            text: 'Estamos efetuando o seu Login!',
+            imageUrl: 'aguarde.gif',
+            imageAlt: 'Custom image',
+            showConfirmButton: false
+        })
+        fetch("../usuarios/entrar", {
+            method: "POST",
+            body: formulario
+        }).then(function(response) {
+
+            if (response.ok) {
+                response.json().then(function(resposta) {
+                    if (resposta == false) {
+                        Swal.fire('Erro no login', 'Tente novamente', 'error');
+                    } else {
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+
+                        if (resposta[0].email == undefined) {
+                            Toast.fire({
+                                type: 'error',
+                                title: 'Por favor insira um e-mail válida!'
+                            }).then(function() {
+                                console.log(JSON.stringify(resposta));
+                                sessionStorage.id = resposta[0].id;
+                                sessionStorage.usuario = resposta[0].nome;
+                                window.location.href = 'dashboard.html';
+                            })
+                        } else {
+
+                            Toast.fire({
+                                type: 'success',
+                                title: 'Login efetuado com sucesso!'
+                            }).then(function() {
+                                console.log(JSON.stringify(resposta));
+                                sessionStorage.setItem('qtdEnds', resposta.length);
+                                for (i = 0; i < resposta.length; i++) {
+                                    sessionStorage.setItem(`end_${i+1}`, JSON.stringify(resposta[i]));
+                                }
+                                sessionStorage.id = resposta[0].id;
+                                sessionStorage.usuario = resposta[0].nome;
+                                verificarAutenticacao();
+                            })
+                        }
+                    }
+                });
+            } else {
+
+                Swal.fire('Erro no login', 'Tente novamente', 'error');
+            }
+        });
+
+        return false;
     }
 </script>
