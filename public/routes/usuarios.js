@@ -8,7 +8,7 @@ var banco = require('../../app-banco');
 // não mexa nessas 3 linhas!
 
 // aqui são as variáveis das informações necessárias dos usuários
-var nome, apelido, email, data, senha;
+var nome, email, data, senha;
 
 router.post('/cadastro', function(req, res, next) {
 
@@ -16,11 +16,11 @@ router.post('/cadastro', function(req, res, next) {
         console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
         // "req.body" são os dados de uma requisão os dados depois do . do body são os dados que estão no html do cadastro o (name) do cadastro
         // é semelhante ao "id" mas a conexão não funciona com "id" apenas com "name"
-        nome = req.body.NOMECompleto;
-        email = req.body.email_usuario;
-        senha = req.body.Senha;
+        nome = req.body.nome_cad;
+        email = req.body.email_cad;
+        senha = req.body.senha_cad;
 
-        if (nome == '' || apelido == '' || email == '' || senha == '') {
+        if (nome == '' || email == '' || senha == '') {
             console.log(`Dados do cadastro  não chegaram completos: ${nome} / ${email} / ${senha}`);
             return;
         }
@@ -31,7 +31,7 @@ router.post('/cadastro', function(req, res, next) {
             if (consulta.recordset[0].qtd == 1) {
                 res.send(false);
             } else {
-                return pool.request().query(`insert into usuario (nome_gerente, email_gerente, senha_gerente) values( 
+                return pool.request().query(`insert into gerente (nome_gerente, email_gerente, senha_gerente) values( 
               '${nome}','${apelido}','${email}','${data}','${senha}');
               select idgerente as id from gerente where nome_gerente='${nome}';`);
             }
@@ -63,12 +63,10 @@ router.post('/entrar', function(req, res, next) {
         console.log(`Chegou p/ login: ${JSON.stringify(req.body)}`);
         login = req.body.nome;
         senha = req.body.senha;
-        if (login == undefined || senha == undefined) {
+        if (login == "" || senha == "") {
             throw new Error(`Dados de login não chegaram completos: ${login} / ${senha}`);
         }
-        return pool.request().query(`select email_gerente as nome,idusuario as id,
-         eventos from gerente, eventos  where email_gerente='${login}' and senha_gerente='${senha}' 
-         and idgerente = fklojas;`);
+        return pool.request().query(`select email_gerente as nome,idgerente as id from gerente where email_gerente='${login}' and senha_gerente='${senha}';`);
     }).then(consulta => {
 
         console.log(`Usuários encontrados: ${JSON.stringify(consulta.recordset)}`);
@@ -77,8 +75,7 @@ router.post('/entrar', function(req, res, next) {
             res.send(consulta.recordset);
         } else {
             banco.conectar().then(pool => {
-                return pool.request().query(`select email_gerente as nome,idgerente as id
-          from gerente where email_gerente='${login}' and senha_gerente='${senha}'`);
+                return pool.request().query(`select email_gerente as nome,idgerente as id from gerente where email_gerente='${login}' and senha_gerente='${senha}'`);
             }).then(consulta => {
                 console.log(`Usuários encontrados: ${JSON.stringify(consulta.recordset)}`);
                 if (consulta.recordset.length > 0) {

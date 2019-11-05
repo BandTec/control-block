@@ -110,6 +110,8 @@ var efetuando_insert = false;
 // iniciando a "escuta" de dispositivos Arduino
 iniciar_escuta();
 
+// por enquanto está comentado mas está função gera números aleatórios 
+
 // setInterval(function() {
 //     registrar_leitura(Math.floor((Math.random() * (24 - 17 + 1)) + 17), 
 //                       Math.floor((Math.random() * (85 - 50 + 1)) + 50))
