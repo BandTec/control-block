@@ -8,7 +8,7 @@ var pasta_projeto_site = 'control-block';
 // leitura dos dados do Arduino
 var porta_serial = require('serialport');
 var leitura_recebida = porta_serial.parsers.Readline;
-var banco = require(`../${pasta_projeto_site}/app-banco.js`);
+var banco = require(`../app-banco`);
 
 // prevenir problemas com muitos recebimentos de dados do Arduino
 require('events').EventEmitter.defaultMaxListeners = 15;
