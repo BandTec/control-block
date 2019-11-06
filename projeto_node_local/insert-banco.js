@@ -72,12 +72,12 @@ function iniciar_escuta() {
 
 // função que recebe valores de Entrada e Saída
 // e faz um insert no banco de dados
-function registrar_leitura(Entrada, Saída) {
+function registrar_leitura(Entrada) {
 
     if (efetuando_insert) {
         console.log('Execução em curso. Aguardando 10s...');
         setTimeout(() => {
-            registrar_leitura(Entrada, Saída);
+            registrar_leitura(Entrada);
         }, 2000);
 
         return;
@@ -85,13 +85,12 @@ function registrar_leitura(Entrada, Saída) {
 
     efetuando_insert = true;
 
-    console.log(`tipo_sensor as Entrada: ${Entrada}`);
-    console.log(`tipo_sensor as Saísa: ${Saída}`);
+    console.log(`tipo_sensor: ${Entrada}`);
 
     banco.conectar().then(pool => {
 
-        return pool.request().query(`INSERT into eventos (tipo_sensor as Entrada, tipo_sensor as Saída, tempo_evento, hora_evento, evento)
-                                values (${Entrada}, ${Saída}, CURRENT_TIMESTAMP, 8);`);
+        return pool.request().query(`insert into eventos (tipo_sensor, data_evento, hora_evento, evento)
+                                values (${Entrada} where idevento = fksensores);`);
 
     }).catch(err => {
 
