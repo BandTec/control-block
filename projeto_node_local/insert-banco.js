@@ -90,7 +90,7 @@ function registrar_leitura(Entrada) {
     banco.conectar().then(pool => {
 
         return pool.request().query(`insert into eventos (tipo_sensor, data_evento, hora_evento, evento)
-                                values (${Entrada} where idevento = fksensores);`);
+                                values (${Entrada} select idevento as id from eventos where idevento = fksensores);`);
 
     }).catch(err => {
 
