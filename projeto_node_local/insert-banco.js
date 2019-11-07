@@ -83,14 +83,44 @@ function registrar_leitura(Entrada) {
         return;
     }
 
-    efetuando_insert = true;
+    function registrar_leitura(saida) {
 
-    console.log(`tipo_sensor: ${Entrada}`);
+        if (efetuando_insert) {
+            console.log('Execução em curso. Aguardando 10s...');
+            setTimeout(() => {
+                registrar_leitura(saida);
+            }, 2000);
+
+            return;
+        }
+
+        efetuando_insert = true;
+
+        console.log(`tipo_sensor_entrada: ${Entrada}`);
+
+        banco.conectar().then(pool => {
+
+            return pool.request().query(`insert into eventos (tipo_sensor_entrada, data_evento, hora_evento, evento)
+                                values (${Entrada} select idevento as id from eventos where idevento = fksensores);`);
+
+        }).catch(err => {
+
+            var erro = `Erro ao tentar registrar aquisição na base: ${err}`;
+            console.error(erro);
+
+        }).finally(() => {
+            banco.sql.close();
+            efetuando_insert = false;
+        });
+
+    }
+
+    console.log(`tipo_sensor_saida: ${Entrada}`);
 
     banco.conectar().then(pool => {
 
-        return pool.request().query(`insert into eventos (tipo_sensor, data_evento, hora_evento, evento)
-                                values (${Entrada} select idevento as id from eventos where idevento = fksensores);`);
+        return pool.request().query(`insert into eventos (tipo_sensor_saida, data_evento, hora_evento, evento)
+                            values (${Entrada} select idevento as id from eventos where idevento = fksensores);`);
 
     }).catch(err => {
 
