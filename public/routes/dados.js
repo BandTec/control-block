@@ -16,8 +16,10 @@ router.get('/estatisticas', function(req, res, next) {
     banco.conectar().then(pool => {
         return pool.request().query(`
           select 
-          max(tipo_sensor) as Número de entradas, 
-          min(tipo_sensor) as Número de saídas, 
+          max(tipo_sensor_entrada), 
+          min(tipo_sensor_entrada), and
+          max(tipo_sensor_saida), 
+          min(tipo_sensor_saida),
           from eventos
           `);
         // aqui é a consulta, ou seja onde ele faz o calculo das estatisticas

@@ -142,9 +142,9 @@
                                 title: 'Login efetuado com sucesso!'
                             }).then(function() {
                                 console.log(JSON.stringify(resposta));
-                                sessionStorage.setItem('qtdEnds', resposta.length);
+                                sessionStorage.setItem('qtdemail', resposta.length);
                                 for (i = 0; i < resposta.length; i++) {
-                                    sessionStorage.setItem(`end_${i+1}`, JSON.stringify(resposta[i]));
+                                    sessionStorage.setItem(`email_${i+1}`, JSON.stringify(resposta[i]));
                                 }
                                 sessionStorage.id = resposta[0].id;
                                 sessionStorage.usuario = resposta[0].nome;

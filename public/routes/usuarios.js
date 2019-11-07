@@ -8,7 +8,7 @@ var banco = require('../../app-banco');
 // não mexa nessas 3 linhas!
 
 // aqui são as variáveis das informações necessárias dos usuários
-var nome, email, data, senha;
+var nome, email, senha;
 
 router.post('/cadastro', function(req, res, next) {
 
@@ -32,8 +32,7 @@ router.post('/cadastro', function(req, res, next) {
                 res.send(false);
             } else {
                 return pool.request().query(`insert into gerente (nome_gerente, email_gerente, senha_gerente) values( 
-              '${nome}','${apelido}','${email}','${data}','${senha}');
-              select idgerente as id from gerente where nome_gerente='${nome}';`);
+              '${nome}','${email}','${senha}'); select idgerente as id from gerente where nome_gerente='${nome}';`);
             }
         }).then(consulta => {
             if (consulta.recordset.length == 1) {

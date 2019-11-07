@@ -9,8 +9,8 @@ router.get('/ultimas', function(req, res, next) {
     banco.conectar().then(pool => {
         var limite_linhas = 1;
         return pool.request().query(`select top ${limite_linhas} 
-                            tipo_sensor as Entrada,
-                            tipo_sensor as Saída,
+                            tipo_sensor_entrada,
+                            tipo_sensor_saida,
                             FORMAT(tempo,'HH:mm:ss') as eventos
                             from eventos order by idEventos desc`);
     }).then(consulta => {
@@ -43,7 +43,7 @@ router.get('/tempo-real', function(req, res, next) {
 
     banco.conectar().then(() => {
         return banco.sql.query(`
-        select top 1 tipo_sensor as Entrada, tipo_sensor as Saída from eventos order by id desc
+        select top 1 tipo_sensor_entrada, tipo_sensor_saida from eventos order by id desc
         `);
     }).then(consulta => {
         // "select top" limita as linhas retornadas em um conjunto de resultados que começão em 1, em ordem descrecente dos dados das estastiticas
