@@ -24,16 +24,17 @@ router.post('/cadastro', function(req, res, next) {
             console.log(`Dados do cadastro  não chegaram completos: ${nome} / ${email} / ${senha}`);
             return;
         }
-        return pool.request().query(`select count(email_gerente) as qtd from gerente where email_gerente='${email}'`);
+        return pool.request().query(`select count(*) as qtd from gerente where email_gerente='${email}'`);
         // aqui é onde ele insere os dados do usuario o nome etc
     }).then(consulta => {
         banco.conectar().then(pool => {
             if (consulta.recordset[0].qtd == 1) {
                 res.send(false);
             } else {
-                return pool.request().query(`insert into gerente (nome_gerente, email_gerente, senha_gerente) values( 
-              '${nome}','${email}','${senha}'); select idgerente as id from gerente where nome_gerente='${nome}';`);
+                pool.request().query(`insert into gerente (idgerente, nome_gerente, email_gerente, senha_gerente) values( 
+                    (select max(idgerente)+1 from gerente), '${nome}','${email}','${senha}');`);
             }
+         return pool.request().query(`select idgerente as id from gerente where nome_gerente='${nome}';`);
         }).then(consulta => {
             if (consulta.recordset.length == 1) {
                 res.send(consulta.recordset[0]);
@@ -74,7 +75,7 @@ router.post('/entrar', function(req, res, next) {
             res.send(consulta.recordset);
         } else {
             banco.conectar().then(pool => {
-                return pool.request().query(`select email_gerente as nome,idgerente as id from gerente where email_gerente='${login}' and senha_gerente='${senha}'`);
+                return pool.request().query(`select idgerente as id, email_gerente as email from gerente where email_gerente='${login}' and senha_gerente='${senha}'`);
             }).then(consulta => {
                 console.log(`Usuários encontrados: ${JSON.stringify(consulta.recordset)}`);
                 if (consulta.recordset.length > 0) {
