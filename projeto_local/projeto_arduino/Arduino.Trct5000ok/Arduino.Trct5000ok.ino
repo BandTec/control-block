@@ -15,13 +15,12 @@ void setup() {
 void loop() {
   //nível lógico 0
  if (digitalRead(digital)){
-  Serial.println ("**");
+   Serial.println (0);
  
  }
  else {
   //nível lógico 1
-  Serial.println ("0");
-  Serial.println ("1");
+  Serial.println (1);
 
   
   

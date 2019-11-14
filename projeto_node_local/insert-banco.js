@@ -56,8 +56,6 @@ function iniciar_escuta() {
         parser.on('data', (dados) => {
             console.error(`Recebeu novos dados do Arduino: ${dados}`);
             try {
-                // O Arduino deve enviar a Entrada e Saída de uma vez,
-                // separadas por ":" (Entrada : Saída)
                 var leitura = dados.split(',');
                 registrar_leitura(Number(leitura[0]), Number(leitura[1]));
             } catch (e) {
@@ -83,25 +81,14 @@ function registrar_leitura(Entrada) {
         return;
     }
 
-    function registrar_leitura(saida) {
-
-        if (efetuando_insert) {
-            console.log('Execução em curso. Aguardando 10s...');
-            setTimeout(() => {
-                registrar_leitura(saida);
-            }, 2000);
-
-            return;
-        }
-
         efetuando_insert = true;
 
-        console.log(`tipo_sensor_entrada: ${Entrada}`);
+        console.log(`tipo_sensor_entrada: '${Entrada}'`);
 
         banco.conectar().then(pool => {
 
-            return pool.request().query(`insert into eventos (tipo_sensor_entrada, data_evento, hora_evento, evento)
-                                values (${Entrada} select idevento as id from eventos where idevento = fksensores);`);
+            return pool.request().query(`insert into eventos (tipo_sensor_entrada) values ('${Entrada}');
+             select idevento as id from eventos where idevento = fksensores;`);
 
         }).catch(err => {
 
@@ -115,25 +102,6 @@ function registrar_leitura(Entrada) {
 
     }
 
-    console.log(`tipo_sensor_saida: ${Entrada}`);
-
-    banco.conectar().then(pool => {
-
-        return pool.request().query(`insert into eventos (tipo_sensor_saida, data_evento, hora_evento, evento)
-                            values (${Entrada} select idevento as id from eventos where idevento = fksensores);`);
-
-    }).catch(err => {
-
-        var erro = `Erro ao tentar registrar aquisição na base: ${err}`;
-        console.error(erro);
-
-    }).finally(() => {
-        banco.sql.close();
-        efetuando_insert = false;
-    });
-
-}
-
 var efetuando_insert = false;
 
 // iniciando a "escuta" de dispositivos Arduino
@@ -141,7 +109,7 @@ iniciar_escuta();
 
 // por enquanto está comentado mas está função gera números aleatórios 
 
-// setInterval(function() {
-//     registrar_leitura(Math.floor((Math.random() * (24 - 17 + 1)) + 17), 
-//                       Math.floor((Math.random() * (85 - 50 + 1)) + 50))
-// }, 10000);
+//setInterval(function() {
+  //      registrar_leitura(Math.floor((Math.random() * ( 1+ 1)) + 17), 
+    //                 Math.floor((Math.random() * (1+ 1)) + 10))
+ //}, 10000);
