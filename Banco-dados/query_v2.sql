@@ -1,36 +1,35 @@
-create table gerente (
-idgerente int primary key,
-nome_gerente varchar(50) NOT NULL,
-usuario_gerente varchar(30) NOT NULL,
-email_gerente varchar(40) UNIQUE NOT NULL,
-senha_gerente varchar(20) NOT NULL,
-fklojas int,
-foreign key (fklojas) references Lojas(idlojas)
+CREATE TABLE GERENTES (
+	idGerente INT PRIMARY KEY IDENTITY(1,1),
+	nome_gerente VARCHAR(50) NOT NULL,
+	usuario_gerente VARCHAR(30) NOT NULL,
+	email_gerente VARCHAR(40) UNIQUE NOT NULL,
+	senha_gerente VARCHAR(20) NOT NULL,
+	fkLojas INT,
+	FOREIGN KEY (fkLojas) REFERENCES Lojas(idLojas)
 );
 
-create table lojas (
-idLojas int primary key, 
-cnpj bigint
+CREATE TABLE LOJAS (
+	idLojas INT PRIMARY KEY IDENTITY(1,1),
+	CNPJ INT
 );
 
-create table sensores (
-idsensor int primary key,
-fklojas int,
-foreign key (fklojas) references Lojas(idlojas)
+CREATE TABLE SENSORES (
+	idSensor INT PRIMARY KEY IDENTITY(1,1),
+	fkLojas INT,
+	FOREIGN KEY (fkLojas) REFERENCES Lojas(idLojas)
 );
 
-
-create table eventos (
-idEvento int primary key,
-tipo_sensor varchar(10) NOT NULL,
-hora_evento time NOT NULL,
-evento int NOT NULL,
-data_evento date NOT NULL,
-fksensores int,
-foreign key (fksensores) references Sensores(idsensor)
+CREATE TABLE EVENTOS (
+	idEvento INT PRIMARY KEY IDENTITY(1,1),
+	tipo_sensor VARCHAR(10),
+	hora_evento TIME,
+	evento INT,
+	data_evento DATE,
+	fkSensores INT,
+	FOREIGN KEY (fkSensores) REFERENCES SENSORES(idSensor)
 );
 
-select *from gerente;
-select *from lojas;
-select *from sensores;
-select *from eventos;
+SELECT * FROM GERENTES;
+SELECT * FROM LOJAS;
+SELECT * FROM SENSORES;
+SELECT * FROM EVENTOS;
