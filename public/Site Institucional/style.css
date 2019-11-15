@@ -1,13 +1,17 @@
 .carousel-item {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+  background-image: linear-gradient(rgba(15, 15, 15, 0.260), rgba(0, 0, 0, 0.477)),
     url(./assets/a.jpg);
   background-size: cover;
   height: 400px;
-  opacity: 0.8;
+  opacity: 0.9;
+  font-family:"Questrial";
 }
-
+.img-fluid {
+  margin:auto;
+}
 .carousel-caption {
-  top: 20px;
+  top: 30px;
+  margin: auto;
 }
 
 .border-success {
@@ -15,7 +19,7 @@
 }
 
 .logo {
-  display: block;
+  display:block;
   float: left;
   overflow: hidden;
   margin-top: 5px;
@@ -27,3 +31,10 @@
   height: 50px;
   width: 50px;
 }
+.card-img-top{
+  margin: auto;
+  height: 150px;
+  width: 150px;
+
+}
+
