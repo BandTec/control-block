@@ -10,9 +10,14 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./node_modules/sweetalert2/dist/sweetalert2.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
 
   <!-- CSS PERSONAL -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Custom CSS -->
+  <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+
 
 
   <title>Control Block - Home</title>
@@ -61,21 +66,56 @@
   </nav>
 
   <!-- Imagem da home -->
-  <div class="carousel slide" data-ride="carousel">
+  <div id="carouselSite" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators"> 
+      <li data-target="#carouselSite" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselSite" data-slide-to="1"></li>
+      <li data-target="#carouselSite" data-slide-to="2"></li>
+
+
+
+    </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active system">
-        <div class="carousel-caption d-none d-lg-block">
-          <img src="./favitest.png" class="rounded mx-auto d-block">
-          <p>
-            As melhores soluções em TI para negócios de sucesso <br><br>
-            Bem vindo a Control Block
-          </p>
-        </div>
+      <div class="carousel-item active">
+          <div class="carousel-caption ">
+        <img src="./favitest.png" class="img-fluid d-block">
+          </div>
+    
+      </div>
+
+      <div class="carousel-item">
+          <div class="carousel-caption my-5 d-none d-md-block">
+              <h1 class="display-3"> 
+                As melhores soluções em TI para negócios de sucesso
+              </h1>
+    
+            </div>
+        
+          
+      </div>
+      <div class="carousel-item">
+          <div class="carousel-caption my-5 d-none d-md-block" >
+              <h1 class="display-3"> 
+                Bem-vindo a Control-Block ! 
+              </h1>
+    
+            </div>  
       </div>
     </div>
+    <a class="carousel-control-prev" href="#carouselSite" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="sr-only">Anterior</span></a>
+
+      <a class="carousel-control-next" href="#carouselSite" role="button" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="sr-only">Avançar</span></a>
+
+      <a class="carousel-control-next" href="#carouselSite" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="sr-only">Avançar</span></a>
   </div>
 
-  <div class="container my-3">
+  <div class="container my-5">
     <!-- Quem somos -->
     <div class="card mb-3 border-0" style="max-width: 100%">
       <div class="row no-gutters">
@@ -88,8 +128,8 @@
               <h1 class="card-title text-center text-primary" id="empresa">Quem somos</h1>
               <!-- Texto com alinhamento justificado -->
               <p style="font-size: 18px" class="card-text text-justify">
-                Somos uma empresa especializada na integração de soluções de Tecnologia da Informação.
-                Onde o foco é qualidade na relação com o cliente e a sua total satisfação. A base do nosso trabalho
+                Somos uma empresa especializada na integração de soluções de Tecnologia da Informação,
+                onde o foco é qualidade na relação com o cliente e a sua total satisfação. A base do nosso trabalho
                 sempre foi entender as necessidades e a realidade de nossos clientes, independente de seu segmento e
                 atuação, e oferecer a eles as melhores soluções em Infraestrutura de TI para o seu desenvolvimento, com
                 agilidade, responsabilidade.
@@ -100,46 +140,37 @@
       </div>
     </div>
   </div>
-
-  <div class="container">
-    <div class="row my-10">
-      <div class="col-sm-6 col-md-4 mb-4">
-        <div class="card rounded border-primary">
-          <div class="card-body text-center">
-            <h4 class="card-title text-primary">Missão</h4>
-            <p style="font-size: 15px" class="card-text">
-              Planejar e prover soluções de tecnologia unindo rigor técnico e agilidade de execução através de equipe de
-              alto desempenho na vanguarda do cenário competitivo.
-            </p>
-          </div>
+  <div class="container my-5">
+  <!--missão, visão e valores -->
+  <div class="card-deck">
+      <div class="card border-0">
+        <img src="./assets/missão.png" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title">Missão</h5>
+          <p class="card-text">Planejar e prover soluções de tecnologia unindo rigor técnico e agilidade de execução através de equipe de alto desempenho na vanguarda do cenário competitivo.</p>
         </div>
+
       </div>
-
-      <div class="col-sm-6 col-md-4 mb-4">
-        <div class="card rounded border-warning">
-          <div class="card-body text-center">
-            <h4 class="card-title text-warning">Visão</h4>
-            <p style="font-size: 15px" class="card-text">
-              Tornar-se referência de atuação, através da excelência em soluções de TI,
-              contribuindo com os resultados dos clientes, assegurando a sustentabilidade do negócio.
-            </p>
-          </div>
+      <div class="card border-0">
+        <img src="./assets/Visão.png" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title">Visão</h5>
+          <p class="card-text">Tornar-se referência de atuação, através da excelência em soluções de TI,
+              contribuindo com os resultados dos clientes, assegurando a sustentabilidade do negócio.</p>
         </div>
+
       </div>
-
-      <div class="col-sm-6 col-md-4 mb-4">
-        <div class="card rounded border-success">
-          <div class="card-body text-center">
-            <h4 class="card-title text-success">Valores</h4>
-            <p style="font-size: 15px" class="card-text">
-              Confiança, honestidade, trabalhar para fazer diferença no mundo, criatividade, comprometimento e ética
-            </p>
-          </div>
-        </div>
+      <div class="card border-0">
+        <img src="./assets/valores.png" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title">Valores </h5>
+          <p class="card-text">Confiança, honestidade, trabalhar para fazer diferença no mundo, criatividade, comprometimento e ética.</p>
+      </div>
       </div>
     </div>
 
-    <div class="container my-10">
+    
+    <div class="container my-5"></div>
       <!-- Produto -->
       <div class="card mb-3 border-0" style="max-width: 100%">
         <div class="row no-gutters">
@@ -152,10 +183,8 @@
                 para otimizar a experiência dos consumidores.<br>
                 O tempo de permanência das pessoas na fila afeta a opinião do usuário sobre o estabelecimento,
                 assim como os efeitos de uma fila maior que a média.<br>
-                Qualidade do atendimento e mensuração do tempo de fila.
                 Um sensor no início e no fim da fila conseguirá analisar o tempo médio que as pessoas ficam
-                paradas na fila e se há um desarranjo em algum momento do dia, quando os níveis de espera sobem de maneira
-                prejudicial.<br>
+                paradas na fila.<br>
                 A nossa tecnologia ajuda na melhoria de tomadas de decisões.<br>
               </p>
             </div>
@@ -206,9 +235,8 @@
                 investimento não proibitivo. O Arduino é um conjunto de ferramentas de prototipagem
                 eletrônica open source que visa tornar mais fácil a criação de dispositivos e sensores
                 eletrônicos. Pode ser especialmente útil na automatização dos processos da sua empresa.<br>
-                Os softwares também trazem um benefício que é o maior alinhamento da equipe de trabalho.<br>
-                Ao ajudar na identificação do perfil comportamental, os gestores conseguem, por exemplo,
-                contratar profissionais mais alinhados às demandas.<br>
+                Os softwares também trazem um benefício que é o maior alinhamento da equipe de trabalho.
+                <br>
                 A tecnologia permite um trabalho mais eficaz, bem como a utilização correta dos recursos,
                 o que leva a uma redução de custos.<br>
                 Essa diminuição dos gastos também ocorre devido à minimização de erros na produção,
@@ -262,14 +290,15 @@
     <script src="./js/script.js"></script>
 
     <!-- Iframe localização -->
-    <div class="my-3">
-      <h4 class="card-title text-center">Nossa localização</h4>
+    <div class="my-5">
+      <h2 class="card-title text-center">Nossa localização</h2>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2867801729813!2d-46.66377078544255!3d-23.558141584684485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2b106d8eb%3A0x763df49953bb4eec!2sRua+Haddock+Lobo%2C+595+-+Cerqueira+C%C3%A9sar%2C+S%C3%A3o+Paulo+-+SP%2C+01414-002!5e0!3m2!1spt-PT!2sbr!4v1524755625215"
         width="100%" height="250" frameborder="0" style="border:0" allowfullscreen=""></iframe>
     </div>
 
     <!-- Footer básico -->
+    
     <ul class="nav justify-content-end">
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Entre em contato conosco:</a>
@@ -284,9 +313,10 @@
         <a class="nav-link" href="#">Reclamações</a>
       </li>
     </ul>
+
     <!-- Start of lucas456help Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=f384eacc-d36d-44bb-b80e-57be47f60375"> </script>
-<!-- End of lucas456help Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=f384eacc-d36d-44bb-b80e-57be47f60375"> </script>
+    <!-- End of lucas456help Zendesk Widget script -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -302,6 +332,8 @@
     <script src="sweetalert2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <!-- Custom scripts for this template -->
+  <script src="js/stylish-portfolio.min.js"></script>
 
 
 
