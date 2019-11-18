@@ -103,65 +103,84 @@
 </html>
 <script>
     function entrar() {
-        var formulario = new URLSearchParams(new FormData(form_login));
-        Swal.fire({
-            title: 'Carregando...',
-            text: 'Estamos efetuando o seu Login!',
-            imageUrl: 'aguarde.gif',
-            imageAlt: 'Custom image',
-            showConfirmButton: false
-        })
-        fetch("../usuarios/entrar", {
-            method: "POST",
-            body: formulario
-        }).then(function (response) {
 
-            if (response.ok) {
-                response.json().then(resposta => {
-                    if (resposta == false) {
-                        Swal.fire('Erro no login', 'Tente novamente', 'error');
-                    } else {
-
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-
-                        if (resposta[0].email == undefined) {
-                            Toast.fire({
-                                type: 'success',
-                                title: 'Login efetuado com sucesso!'
-                            }).then(function () {
-                                console.log(JSON.stringify(resposta));
-                                sessionStorage.setItem('qtdemail', resposta.length);
-                                for (i = 0; i < resposta.length; i++) {
-                                    sessionStorage.setItem(`email_${i + 1}`, JSON.stringify(resposta[i]));
-                                }
-                                sessionStorage.id = resposta[0].id;
-                                sessionStorage.usuario = resposta[0].nome;
-                                
-                            })
-                        } else {
-                            Toast.fire({
-                                type: 'error',
-                                title: 'Por favor insira um e-mail válida!'
-                            }).then(function () {
-                                console.log(JSON.stringify(resposta));
-                                sessionStorage.id = resposta[0].id;
-                                sessionStorage.usuario = resposta[0].nome;
-                                window.location.href = '../Dashboard/index.html';
-                            })
-                        }
-                    }
-                });
-            } else {
-
-                Swal.fire('Erro no login', 'Tente novamente', 'error');
-            }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
         });
 
-        return false;
+        if (nome_login.value == "" && senha_login.value != "") {
+            Toast.fire({
+                type: 'error',
+                title: 'Usuário não informado!'
+            });
+        } else if (nome_login.value != "" && senha_login.value == "") {
+            Toast.fire({
+                type: 'error',
+                title: 'Senha não informada!'
+            });
+        } else if (nome_login.value == "" && senha_login.value == "") {
+            Toast.fire({
+                type: 'error',
+                title: 'Usuário e Senha não informada!'
+            });
+        } else {
+
+            var formulario = new URLSearchParams(new FormData(form_login));
+            Swal.fire({
+                title: 'Carregando...',
+                text: 'Estamos efetuando o seu Login!',
+                imageUrl: 'aguarde.gif',
+                imageAlt: 'Custom image',
+                showConfirmButton: false
+            })
+            fetch("../usuarios/entrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+
+                if (response.ok) {
+                    response.json().then(resposta => {
+                        if (resposta == false) {
+                            Swal.fire('Erro no login', 'Tente novamente', 'error');
+                        } else {
+
+                            if (resposta[0].email == undefined) {
+                                Toast.fire({
+                                    type: 'success',
+                                    title: 'Login efetuado com sucesso!'
+                                }).then(function () {
+                                    console.log(JSON.stringify(resposta));
+                                    sessionStorage.setItem('qtdemail', resposta.length);
+                                    for (i = 0; i < resposta.length; i++) {
+                                        sessionStorage.setItem(`email_${i + 1}`, JSON.stringify(resposta[i]));
+                                    }
+                                    sessionStorage.id = resposta[0].id;
+                                    sessionStorage.usuario = resposta[0].nome;
+                                    window.location.href = '../Dashboard/index.html';
+                                })
+                            } else {
+                                Toast.fire({
+                                    type: 'error',
+                                    title: 'Por favor insira um e-mail válida!'
+                                }).then(function () {
+                                    console.log(JSON.stringify(resposta));
+                                    sessionStorage.id = resposta[0].id;
+                                    sessionStorage.usuario = resposta[0].nome;
+                                })
+                            }
+                        }
+                    });
+                } else {
+
+                    Swal.fire('Erro no login', 'Tente novamente', 'error');
+                }
+            });
+
+            return false;
+
+        }
     }
 </script>

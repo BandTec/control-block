@@ -64,22 +64,22 @@
                     <h1>Cadastro</h1>
 
                     <p>
-                        <label for="nome_completo">Qual o seu nome completo?</label>
+                        <label for="nome_completo">Informe seu nome completo</label>
                         <input id="nome_completo" class="border border-success" name="nome_completo" required="required" type="text" placeholder="Nome" />
                     </p>
 
                     <p>
-                        <label for="nome_cad">Qual o seu usuário?</label>
-                        <input id="nome_cad" class="border border-success" name="nome_cad" required="required" type="text" placeholder="Nome" />
+                        <label for="nome_usuario">Escolha o nome de usuário</label>
+                        <input id="nome_usuario" class="border border-success" name="nome_usuario" required="required" type="text" placeholder="Nome" />
                     </p>
 
                     <p>
-                        <label for="email_cad">Qual o seu e-mail?</label>
+                        <label for="email_cad">Informe seu e-mail</label>
                         <input id="email_cad" name="email_cad" required="required" class="border border-success" type="email" placeholder="contato@servidor.com" />
                     </p>
 
                     <p>
-                        <label for="senha_cad">Qual será a sua senha?</label>
+                        <label for="senha_cad">Informe uma senha</label>
                         <input id="senha_cad" name="senha_cad" required="required" class="border border-success" type="password" placeholder="*********" />
                     </p>
 
@@ -102,48 +102,87 @@
 
 </html>
 <script>
-    function registrar() {
-        var formulario = new URLSearchParams(new FormData(form_cadastro));
-        Swal.fire({
-            title: 'Carregando...',
-            text: 'Estamos efetuando o seu cadastro!',
-            imageUrl: 'aguarde.gif',
-            imageAlt: 'Custom image',
-            showConfirmButton: false
-        })
-        fetch("../usuarios/cadastro", {
-            method: "POST",
-            body: formulario
-        }).then(function(response) {
+    function entrar() {
 
-            if (response.ok) {
-
-                response.json().then(function(resposta) {
-                    if (resposta == false) {
-                        Swal.fire('Algo deu errado', 'Tente novamente', 'warning');
-                    } else {
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-
-                        Toast.fire({
-                            type: 'success',
-                            title: 'Cadastrado com sucesso!'
-                        }).then(function() {
-                            sessionStorage.id = resposta.id;
-                            window.location.href = 'login.html';
-                        })
-
-                    }
-
-                });
-            } else {
-                Swal.fire('Erro no cadastro', 'Tente novamente', 'error');
-            }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
         });
-        return false;
+
+        if (nome_login.value == "" && senha_login.value != "") {
+            Toast.fire({
+                type: 'error',
+                title: 'Usuário não informado!'
+            });
+        } else if (nome_login.value != "" && senha_login.value == "") {
+            Toast.fire({
+                type: 'error',
+                title: 'Senha não informada!'
+            });
+        } else if (nome_login.value == "" && senha_login.value == "") {
+            Toast.fire({
+                type: 'error',
+                title: 'Usuário e senha não informada!'
+            });
+        } else {
+
+            var formulario = new URLSearchParams(new FormData(form_login));
+            
+            Swal.fire({
+                title: 'Carregando...',
+                text: 'Verificando informações no Banco de Dados!',
+                imageUrl: 'aguarde.gif',
+                showConfirmButton: false
+            });
+
+            fetch("../usuarios/entrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+
+                if (response.ok == true) {
+                    response.json().then(resposta => {
+                        if (resposta.ok == false) {
+                            Swal.fire('Erro no login', 'Tente novamente', 'error');
+                        } else {
+
+                            if (resposta[0].email == undefined) {
+                                Toast.fire({
+                                    type: 'success',
+                                    title: 'Login efetuado com sucesso!'
+                                }).then(function () {
+                                    console.log(JSON.stringify(resposta));
+                                    sessionStorage.setItem('qtdemail', resposta.length);
+                                    for (i = 0; i < resposta.length; i++) {
+                                        sessionStorage.setItem(`email_${i + 1}`, JSON.stringify(resposta[i]));
+                                    }
+                                    sessionStorage.id = resposta[0].id;
+                                    sessionStorage.usuario = resposta[0].nome;
+                                    window.location.href = '../Dashboard/index.html';
+
+                                })
+                            } else {
+                                Toast.fire({
+                                    type: 'error',
+                                    title: 'Por favor insira um e-mail válida!'
+                                }).then(function () {
+                                    console.log(JSON.stringify(resposta));
+                                    sessionStorage.id = resposta[0].id;
+                                    sessionStorage.usuario = resposta[0].nome;
+
+                                })
+                            }
+                        }
+                    });
+                } else {
+
+                    Swal.fire('Erro no login', 'Tente novamente', 'error');
+                }
+            });
+
+            return false;
+        }
     }
 </script>
