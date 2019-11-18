@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./node_modules/sweetalert2/dist/sweetalert2.min.css">
 
     <!-- CSS PERSONAL -->
@@ -66,12 +67,14 @@
                     <h1>Entrar</h1>
                     <p>
                         <label for="nome_login">Qual o seu usuário?</label>
-                        <input id="nome_login" class="border border-primary" name="nome_login" required="required" type="text" placeholder="Digite seu usuário" />
+                        <input id="nome_login" class="border border-primary" name="nome_login" required="required"
+                            type="text" placeholder="Digite seu usuário" />
                     </p>
 
                     <p>
                         <label for="senha_login">Qual a sua senha?</label>
-                        <input id="senha_login" class="border border-primary" name="senha_login" required="required" type="password" placeholder="Digite sua senha" />
+                        <input id="senha_login" class="border border-primary" name="senha_login" required="required"
+                            type="password" placeholder="Digite sua senha" />
                     </p>
 
                     <p>
@@ -80,7 +83,8 @@
                     </p>
 
                     <p>
-                        <button type="button" onclick="entrar()" class="btn btn-lg btn-primary btn-block">Entrar</button>
+                        <button type="button" onclick="entrar()"
+                            class="btn btn-lg btn-primary btn-block">Entrar</button>
                     </p>
 
                     <p class="link">
@@ -110,10 +114,10 @@
         fetch("../usuarios/entrar", {
             method: "POST",
             body: formulario
-        }).then(function(response) {
+        }).then(function (response) {
 
             if (response.ok) {
-                response.json().then(function(resposta) {
+                response.json().then(resposta => {
                     if (resposta == false) {
                         Swal.fire('Erro no login', 'Tente novamente', 'error');
                     } else {
@@ -127,28 +131,27 @@
 
                         if (resposta[0].email == undefined) {
                             Toast.fire({
+                                type: 'success',
+                                title: 'Login efetuado com sucesso!'
+                            }).then(function () {
+                                console.log(JSON.stringify(resposta));
+                                sessionStorage.setItem('qtdemail', resposta.length);
+                                for (i = 0; i < resposta.length; i++) {
+                                    sessionStorage.setItem(`email_${i + 1}`, JSON.stringify(resposta[i]));
+                                }
+                                sessionStorage.id = resposta[0].id;
+                                sessionStorage.usuario = resposta[0].nome;
+                                
+                            })
+                        } else {
+                            Toast.fire({
                                 type: 'error',
                                 title: 'Por favor insira um e-mail válida!'
-                            }).then(function() {
+                            }).then(function () {
                                 console.log(JSON.stringify(resposta));
                                 sessionStorage.id = resposta[0].id;
                                 sessionStorage.usuario = resposta[0].nome;
                                 window.location.href = '../Dashboard/index.html';
-                            })
-                        } else {
-
-                            Toast.fire({
-                                type: 'success',
-                                title: 'Login efetuado com sucesso!'
-                            }).then(function() {
-                                console.log(JSON.stringify(resposta));
-                                sessionStorage.setItem('qtdemail', resposta.length);
-                                for (i = 0; i < resposta.length; i++) {
-                                    sessionStorage.setItem(`email_${i+1}`, JSON.stringify(resposta[i]));
-                                }
-                                sessionStorage.id = resposta[0].id;
-                                sessionStorage.usuario = resposta[0].nome;
-                                verificarAutenticacao();
                             })
                         }
                     }
