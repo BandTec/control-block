@@ -24,7 +24,7 @@ router.post("/cadastro", function(req, res, next) {
 
       if (nome_completo == "" || nome == "" || email == "" || senha == "") {
         console.log(
-          `Dados do cadastro  não chegaram completos: ${ome_completo} / ${nome} / ${email} / ${senha}`
+          `Dados do cadastro  não chegaram completos: ${nome_completo} / ${nome_usuario} / ${email} / ${senha}`
         );
         return;
       }
@@ -43,13 +43,13 @@ router.post("/cadastro", function(req, res, next) {
             res.send(false);
           } else {
             pool.request()
-              .query(`insert into GERENTES (nome_gerente, usuario_gerente, email_gerente, senha_gerente) values( 
-                    '${nome_completo}', '${nome}','${email}','${senha}');`);
+              .query(`INSERT INTO GERENTES (nome_gerente, usuario_gerente, email_gerente, senha_gerente)
+                VALUES('${nome_completo}', '${nome_usuario}', '${email}', '${senha}');`);
           }
           return pool
             .request()
             .query(
-              `select idgerente as id from gerentes where nome_gerente='${nome}';`
+              `SELECT idgerente as id FROM GERENTES WHERE nome_gerente = '${nome_usuario}';`
             );
         })
         .then(consulta => {
@@ -71,6 +71,7 @@ router.post("/cadastro", function(req, res, next) {
 });
 // para a conexão do login é bem mais complexo, porque assim que iniciado o login todos os dados que petendemos exibir para o usuário
 // tem que estar aqui
+
 var login, senha;
 
 router.post("/entrar", function(req, res, next) {
@@ -105,7 +106,7 @@ router.post("/entrar", function(req, res, next) {
             return pool
               .request()
               .query(
-                `select idgerente as id, email_gerente as email from gerentes where email_gerente='${login}' and senha_gerente='${senha}'`
+                `SELECT usuario_gerente, email_gerente, senha_gerente FROM GERENTES WHERE usuario_gerente='${login}' OR email_gerente='${login}' AND senha_gerente='${senha}';`
               );
           })
           .then(consulta => {
