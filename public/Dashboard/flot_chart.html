@@ -9,6 +9,28 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <title>Control Block</title>
 
+    <script src="../../../../dist/2.9.3/Chart.min.js"></script>
+
+    <style>
+            canvas {
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+            }
+            .chart-container {
+                width: 500px;
+                margin-left: 40px;
+                margin-right: 40px;
+                margin-bottom: 40px;
+            }
+            .container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            </style>
+
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -30,51 +52,28 @@
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
-            <!--logo start-->
+           
             <a href="index.html" class="logo"><b>Control<span>Block</span></b></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-tasks"></i>
-
-
-
-
-
-            </div>
+          
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.html">Sair</a></li>
                 </ul>
             </div>
         </header>
-        <!--sidebar start-->
+      
         <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="profile.html"><img src="img/favicon.png" class="img-circle" width="150"></a>
+                        <a href="profile.html"><img src="img/favicon.png" class="img-circle" width="220"></a>
                     </p>
                     <li class="mt">
                         <a href="index.html">
                             <i class="fa fa-dashboard"></i>
                             <span>Gráficos</span>
                         </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-th"></i>
-                            <span>Relatórios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="responsive_table.html">Relatório diários</a></li>
-                            <li><a href="advanced_table.html">Relatórios mensais</a></li>
-                        </ul>
                     </li>
                     <li>
                         <li class="sub-menu">
@@ -93,58 +92,27 @@
         <section id="main-content">
             <section class="wrapper">
                 <h3><i class="fa fa-angle-right"></i> Gráficos</h3>
-                <!-- page start-->
-                <div class="flot-chart">
-                    <!-- page start-->
                     <div class="row mt">
                         <div class="col-lg-12">
-                            <div class="content-panel">
                                 <h4><i class="fa fa-angle-right"></i> Gráfico semanal</h4>
                                 <div class="panel-body">
-                                    <div id="chart-1" class="chart"></div>
+                                    <div class="container"></div>
+       
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="btn-toolbar">
-                        <div class="btn-group stackControls">
-                            <input type="button" class="btn btn-info" value="With stacking" />
-                            <input type="button" class="btn btn-danger" value="Without stacking" />
-                        </div>
-                        <div class="space5"></div>
-                        <div class="btn-group graphControls">
-                            <input type="button" class="btn" value="Bars" />
-                            <input type="button" class="btn" value="Lines" />
-                            <input type="button" class="btn" value="Lines with steps" />
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <!--/coontent-panel -->
-                </div>
-                <!-- /col-lg-6 --->
-                </div>
-                <!-- row -->
-                </div>
-                <!--/flot-chart -->
-                <!-- page end-->
+                   
             </section>
         </section>
-        <!-- /MAIN CONTENT -->
-        <!--main content end-->
-        <!--footer start-->
+       
         <footer class="site-footer">
             <div class="text-center">
                 <p>
                     &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
                 </p>
                 <div class="credits">
-                    <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
+                
                     Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
                 </div>
                 <a href="flot_chart.html#" class="go-top">
@@ -152,9 +120,9 @@
                 </a>
             </div>
         </footer>
-        <!--footer end-->
+      
     </section>
-    <!-- js placed at the end of the document so the pages load faster -->
+
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
@@ -168,7 +136,230 @@
     <script src="lib/flot/jquery.flot.stack.js"></script>
     <script src="lib/flot/jquery.flot.crosshair.js"></script>
     <script src="lib/flotchart-conf.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 </body>
-
 </html>
+<script>
+       
+        function createConfig(details, data) {
+             return {
+                 type: 'line',
+                 data: {
+                     labels: ['Dia 1', 'Dia 2', 'Dia 3', 'Dia 4', 'Dia 5', 'Dia 6'],
+                     datasets: [{
+                         label: 'relatório semanal: ' + details.steppedLine,
+                         steppedLine: details.steppedLine,
+                         data: data,
+                         borderColor: details.color,
+                         fill: false,
+                     }]
+                 },
+                 options: {
+                     responsive: true,
+                     title: {
+                         display: true,
+                         text: details.label,
+                     }
+                 }
+             };
+         }
+ 
+ 
+         window.onload = function() {
+             var container = document.querySelector('.container');
+ 
+             var data = [
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor()
+             ];
+ 
+             var steppedLineSettings = [{
+                 steppedLine: 'Semana 1',
+                 label: 'Entrada x Saída',
+                 color: window.chartColors.red
+                 
+             }, {
+                 steppedLine: 'Semana 2',
+                 label: 'Entrada x Saída',
+                 color: window.chartColors.green
+             }, {
+                 steppedLine: 'Semana 3',
+                 label: 'Entrada x Saída',
+                 color: window.chartColors.green
+             }, {
+                 steppedLine: 'Semana 4',
+                 label: 'Entrada x Saída',
+                 color: window.chartColors.purple
+             }, {
+                 steppedLine: 'Semana 5',
+                 label: 'Entrada x Saída',
+                 color: window.chartColors.blue
+             }];
+ 
+             steppedLineSettings.forEach(function(details) {
+                 var div = document.createElement('div');
+                 div.classList.add('chart-container');
+ 
+                 var canvas = document.createElement('canvas');
+                 div.appendChild(canvas);
+                 container.appendChild(div);
+ 
+                 var ctx = canvas.getContext('2d');
+                 var config = createConfig(details, data);
+                 new Chart(ctx, config);
+             });
+         };
+         
+         'use strict';
+ 
+ window.chartColors = {
+     red: 'rgb(255, 99, 132)',
+     orange: 'rgb(255, 159, 64)',
+     yellow: 'rgb(255, 205, 86)',
+     green: 'rgb(75, 192, 192)',
+     blue: 'rgb(54, 162, 235)',
+     purple: 'rgb(153, 102, 255)',
+     grey: 'rgb(201, 203, 207)'
+ };
+ 
+ (function(global) {
+     var MONTHS = [
+         'January',
+         'February',
+         'March',
+         'April',
+         'May',
+         'June',
+         'July',
+         'August',
+         'September',
+         'October',
+         'November',
+         'December'
+     ];
+ 
+     var COLORS = [
+         '#4dc9f6',
+         '#f67019',
+         '#f53794',
+         '#537bc4',
+         '#acc236',
+         '#166a8f',
+         '#00a950',
+         '#58595b',
+         '#8549ba'
+     ];
+ 
+     var Samples = global.Samples || (global.Samples = {});
+     var Color = global.Color;
+ 
+     Samples.utils = {
+         // Adapted from http://indiegamr.com/generate-repeatable-random-numbers-in-js/
+         srand: function(seed) {
+             this._seed = seed;
+         },
+ 
+         rand: function(min, max) {
+             var seed = this._seed;
+             min = min === undefined ? 0 : min;
+             max = max === undefined ? 1 : max;
+             this._seed = (seed * 9301 + 49297) % 233280;
+             return min + (this._seed / 233280) * (max - min);
+         },
+ 
+         numbers: function(config) {
+             var cfg = config || {};
+             var min = cfg.min || 0;
+             var max = cfg.max || 1;
+             var from = cfg.from || [];
+             var count = cfg.count || 8;
+             var decimals = cfg.decimals || 8;
+             var continuity = cfg.continuity || 1;
+             var dfactor = Math.pow(10, decimals) || 0;
+             var data = [];
+             var i, value;
+ 
+             for (i = 0; i < count; ++i) {
+                 value = (from[i] || 0) + this.rand(min, max);
+                 if (this.rand() <= continuity) {
+                     data.push(Math.round(dfactor * value) / dfactor);
+                 } else {
+                     data.push(null);
+                 }
+             }
+ 
+             return data;
+         },
+ 
+         labels: function(config) {
+             var cfg = config || {};
+             var min = cfg.min || 0;
+             var max = cfg.max || 100;
+             var count = cfg.count || 8;
+             var step = (max - min) / count;
+             var decimals = cfg.decimals || 8;
+             var dfactor = Math.pow(10, decimals) || 0;
+             var prefix = cfg.prefix || '';
+             var values = [];
+             var i;
+ 
+             for (i = min; i < max; i += step) {
+                 values.push(prefix + Math.round(dfactor * i) / dfactor);
+             }
+ 
+             return values;
+         },
+ 
+         months: function(config) {
+             var cfg = config || {};
+             var count = cfg.count || 12;
+             var section = cfg.section;
+             var values = [];
+             var i, value;
+ 
+             for (i = 0; i < count; ++i) {
+                 value = MONTHS[Math.ceil(i) % 12];
+                 values.push(value.substring(0, section));
+             }
+ 
+             return values;
+         },
+ 
+         color: function(index) {
+             return COLORS[index % COLORS.length];
+         },
+ 
+         transparentize: function(color, opacity) {
+             var alpha = opacity === undefined ? 0.5 : 1 - opacity;
+             return Color(color).alpha(alpha).rgbString();
+         }
+     };
+ 
+     // DEPRECATED
+     window.randomScalingFactor = function() {
+         return Math.round(Samples.utils.rand(-100, 100));
+     };
+ 
+     // INITIALIZATION
+ 
+     Samples.utils.srand(Date.now());
+ 
+     // Google Analytics
+     /* eslint-disable */
+     if (document.location.hostname.match(/^(www\.)?chartjs\.org$/)) {
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+         ga('create', 'UA-28909194-3', 'auto');
+         ga('send', 'pageview');
+     }
+     /* eslint-enable */
+ 
+ }(this));
+         </script>

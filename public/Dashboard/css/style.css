@@ -4,7 +4,7 @@
 /* BASIC THEME CONFIGURATION */
 body {
     color: #ffffff;
-	background: #eaeaea;
+	background: azure;
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
@@ -221,7 +221,7 @@ ul.top-menu > li > .logout {
     width: 210px;
     height: 100%;
     position: fixed;
-    background: #ffffff;
+    background: black;
 }
 
 #sidebar h5 {
@@ -402,7 +402,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #1E1C2F;
+    background: rgb(0, 0, 0);
     border-bottom: 1px solid #393d46;
 }
 
@@ -957,7 +957,7 @@ PANELS CONFIGURATIONS
 	margin-top: 10px;
 }
 .green-panel h3 {
-	color: white;
+	color: rgb(0, 0, 0);
 	font-weight: 100;
 }
 .green-panel p {

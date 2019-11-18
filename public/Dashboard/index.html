@@ -31,19 +31,8 @@
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
-            <!--logo start-->
+           
             <a href="index.html" class="logo"><b>Control<span>Block</span></b></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-tasks"></i>
-
-                    </li>
-            </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="index.html">Sair</a></li>
@@ -56,7 +45,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered">
-                        <a href="profile.html"><img src="img/favicon.png" class="img-circle" width="150"></a>
+                        <a href="profile.html"><img src="img/favicon.png" class="img-circle" width="220"></a>
                     </p>
                     <li class="mt">
                         <a class="active" href="index.html">
@@ -65,17 +54,6 @@
                         </a>
                     </li>
 
-
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-th"></i>
-                            <span>Relatórios</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="responsive_table.html">Relatório diário</a></li>
-                            <li><a href="advanced_table.html">Relatório avançado</a></li>
-                        </ul>
-                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class=" fa fa-bar-chart-o"></i>
@@ -291,17 +269,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var unique_id = $.gritter.add({
-                // (string | mandatory) the heading of the notification
                 title: 'Bem vindo ao Control Block!',
-                // (string | mandatory) the text inside the notification
-                text: 'Desejamos a voce um ótim dia!!',
-                // (string | optional) the image to display on the left
+                text: 'Desejamos a você um ótimo dia!!',
                 image: 'img/favicon.png',
-                // (bool | optional) if you want it to fade out on its own or just sit there
                 sticky: false,
-                // (int | optional) the time you want it to be alive for before fading out
                 time: 4000,
-                // (string | optional) the class name you want to apply to that specific message
                 class_name: 'my-sticky-class'
             });
 
