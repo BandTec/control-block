@@ -1,7 +1,7 @@
 CREATE TABLE GERENTES (
 	idGerente INT PRIMARY KEY IDENTITY(1,1),
 	nome_gerente VARCHAR(50) NOT NULL,
-	usuario_gerente VARCHAR(30) NOT NULL,
+	usuario_gerente VARCHAR(30) UNIQUE NOT NULL,
 	email_gerente VARCHAR(40) UNIQUE NOT NULL,
 	senha_gerente VARCHAR(20) NOT NULL,
 	fkLojas INT,

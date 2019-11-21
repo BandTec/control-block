@@ -22,16 +22,16 @@ router.post("/cadastro", function(req, res, next) {
       email = req.body.email_cad;
       senha = req.body.senha_cad;
 
-      if (nome_completo == "" || nome == "" || email == "" || senha == "") {
+      if (nome_completo == "" || nome_usuario == "" || email == "" || senha == "") {
         console.log(
-          `Dados do cadastro  não chegaram completos: ${nome_completo} / ${nome_usuario} / ${email} / ${senha}`
+          `Dados do cadastro não chegaram completos: ${nome_completo} / ${nome_usuario} / ${email} / ${senha}`
         );
         return;
       }
       return pool
         .request()
         .query(
-          `select count(*) as qtd from gerentes where email_gerente='${email}'`
+          `SELECT COUNT(*) FROM GERENTES WHERE email_gerente='${email}';`
         );
       // aqui é onde ele insere os dados do usuario o nome etc
     })
@@ -49,7 +49,7 @@ router.post("/cadastro", function(req, res, next) {
           return pool
             .request()
             .query(
-              `SELECT idgerente as id FROM GERENTES WHERE nome_gerente = '${nome_usuario}';`
+              `SELECT idgerente FROM GERENTES WHERE nome_gerente = '${nome_usuario}';`
             );
         })
         .then(consulta => {
