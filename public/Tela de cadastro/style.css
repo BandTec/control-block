@@ -101,7 +101,7 @@ input {
 /*estilo dos input,  menos o checkbox */
 
 input:not([type="checkbox"]) {
-    width: 85%;
+    width: 100%;
     margin-top: 2px;
     padding: 6px;
     border: 1px solid #b2b2b2;
