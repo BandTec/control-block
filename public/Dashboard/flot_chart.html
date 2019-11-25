@@ -85,7 +85,7 @@
                             <span>Gráficos</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="flot_chart.html">Gráfico semanal</a></li>
+                            <li><a href="flot_chart.html">Gráfico em tempo real</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -98,7 +98,7 @@
                 <h3><i class="fa fa-angle-right "></i> Gráficos</h3>
                 <div class="row mt ">
                     <div class="col-lg-12 ">
-                        <h4 style="margin-left: 280px; font-size: 30px"><i class="fa fa-angle-right "></i> Gráfico semanal</h4>
+                        <h4 style="margin-left: 280px; font-size: 30px"><i class="fa fa-angle-right "></i> Gráfico em tempo real</h4>
                         <div class="panel-body ">
                             <div class="container "></div>
 
@@ -142,23 +142,43 @@
 
 </html>
 <script>
-    function createConfig(gridlines, title) {
+/*
+    setInterval(() => {
+        valoresGrafico();
+        for (var i = 0; i < 7; i++) {
+            valoresGrafico().data.datasets[0].data[i] = parseInt(Math.random() * 10) + 1;
+        }
+    }, 5000);   
+*/
+
+function atualizar_entradas() {
+    var vx = [];
+    while(vx.length<7) {
+        vx.push(parseInt(Math.random() * 10) + 1);
+    };
+    
+    return vx;    
+}
+
+    var valoresGrafico = function createConfig(gridlines, title) {
+        //atualizar_entradas();
+        //console.log(ventradas);
         return {
             type: 'line',
-            data: {
-                labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabádo', 'Domingo'],
+            data : {
+                labels: ['10:00', '11:00','12:00','13:00' ],
                 datasets: [{
                     label: 'Entradas',
                     backgroundColor: window.chartColors.purple,
                     borderColor: window.chartColors.purple,
-                    data: [10, 30, 39, 20, 25, 34, 0],
+                    data: atualizar_entradas(),
                     fill: false,
                 }, {
                     label: 'Saídas',
                     fill: false,
                     backgroundColor: window.chartColors.blue,
                     borderColor: window.chartColors.blue,
-                    data: [18, 33, 22, 19, 11, 39, 30],
+                    data: atualizar_entradas(),
                 }]
             },
             options: {
@@ -173,7 +193,7 @@
                     }],
                     yAxes: [{
                         gridLines: gridlines,
-                        ticks: {
+                        ticksw: {
                             min: 0,
                             max: 100,
                             stepSize: 10
@@ -188,23 +208,23 @@
         var container = document.querySelector('.container');
 
         [{
-            title: 'Segunda',
+            title: 'Fila  1',
             gridLines: {
                 display: true
             }
         }, {
-            title: 'Terça',
+            title: 'Fila  2',
             gridLines: {
                 display: false
             }
         }, {
-            title: 'Quarta',
+            title: 'Fila 3',
             gridLines: {
                 display: false,
                 drawBorder: false
             }
         }, {
-            title: 'Quinta',
+            title: 'Fila 4',
             gridLines: {
                 display: true,
                 drawBorder: true,
@@ -220,18 +240,27 @@
             }
         }].forEach(function(details) {
             var div = document.createElement('div');
-            div.classList.add('chart-container');
+        div.classList.add('chart-container');
 
-            var canvas = document.createElement('canvas');
-            div.appendChild(canvas);
-            container.appendChild(div);
+        var canvas = document.createElement('canvas');
+        div.appendChild(canvas);
+        container.appendChild(div);
 
-            var ctx = canvas.getContext('2d');
-            var config = createConfig(details.gridLines, details.title);
-            new Chart(ctx, config);
+            plotar_grafico(details, container, canvas);
         });
     };
-    'use strict';
+
+    function plotar_grafico(details, container, canvas) {
+
+        var ctx = canvas.getContext('2d');
+        var config = valoresGrafico(details.gridLines, details.title);
+        new Chart(ctx, config);
+    
+        setTimeout(() => {
+            plotar_grafico(details, container, canvas);
+        }, 2500);
+    }
+    
 
     window.chartColors = {
         red: 'rgb(255, 99, 132)',
@@ -385,4 +414,5 @@
         /* eslint-enable */
 
     }(this));
+
 </script>
