@@ -10,7 +10,7 @@ var banco = require("../../app-banco");
 // aqui são as variáveis das informações necessárias dos usuários
 var nome_completo, nome_usuario, email, senha;
 
-router.post("/cadastro", function(req, res, next) {
+router.post("/cadastro", function (req, res, next) {
   banco
     .conectar()
     .then(pool => {
@@ -74,7 +74,7 @@ router.post("/cadastro", function(req, res, next) {
 
 var login, senha;
 
-router.post("/entrar", function(req, res, next) {
+router.post("/entrar", function (req, res, next) {
   banco
     .conectar()
     .then(pool => {
